@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('japanese', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('often_go_location_id')->constrained('japan_locations');
+            $table->foreignId('register_location_id')->constrained('japan_locations','id');
+            $table->foreignId('often_go_location_id')->constrained('japan_locations','id');
             $table->timestamps();
         });
     }
