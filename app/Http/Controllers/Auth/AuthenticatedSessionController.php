@@ -34,7 +34,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(Auth::user()->is_japanese==0){
+            return redirect(RouteServiceProvider::JAPANESE_HOME);
+        }else{
+            return redirect(RouteServiceProvider::FOREIGN_HOME);
+        }
     }
 
     /**
