@@ -11,7 +11,15 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    is_japanese: '',
+    gender_flag: '',
+    age: '',
+    hobby_category_id: '',
     terms: false,
+});
+
+defineProps({
+    hobby_categories: Array
 });
 
 const submit = () => {
@@ -85,6 +93,71 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+            
+            <div class="mt-4">
+                <InputLabel for="is_japanese" value="Japanese or Foreign visitor to Japan?" />
+
+                <select 
+                    id="is_japanese"
+                    class="mt-1 block w-full"
+                    v-model="form.is_japanese"
+                    required
+                    autocomplete="is_japanese"
+                >
+                    <option value="0">Japanese</option>
+                    <option value="1">Foreign visitor</option>
+                </select>
+
+                <InputError class="mt-2" :message="form.errors.is_japanese" />
+            </div>
+            
+            <div class="mt-4">
+                <InputLabel for="gender_flag" value="Gender" />
+
+                <select 
+                    id="gender_flag"
+                    class="mt-1 block w-full"
+                    v-model="form.gender_flag"
+                    required
+                    autocomplete="gender_flag"
+                >
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+
+                <InputError class="mt-2" :message="form.errors.gender_flag" />
+            </div>
+            
+            <div class="mt-4">
+                <InputLabel for="age" value="Age" />
+
+                <TextInput
+                    id="age"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.age"
+                    required
+                    autocomplete="age"
+                />
+
+                <InputError class="mt-2" :message="form.errors.age" />
+            </div>
+            
+            <div class="mt-4">
+                <InputLabel for="hobby_category_id" value="Hobby" />
+
+                <select 
+                    id="hobby_category_id"
+                    class="mt-1 block w-full"
+                    v-model="form.hobby_category_id"
+                    required
+                    autocomplete="hobby_category_id"
+                >
+                    <option v-for="hobby_category in hobby_categories" :value="hobby_category.id">{{ hobby_category.name }}</option>
+                </select>
+
+                <InputError class="mt-2" :message="form.errors.hobby_category_id" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

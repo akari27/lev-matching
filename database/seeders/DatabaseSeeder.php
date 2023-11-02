@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GeoDivisionSeeder::class,
             CountrySeeder::class,
+            JapanRegionSeeder::class,
+            JapanLocationSeeder::class,
+            HobbyCategorySeeder::class,
         ]);
     }
 }

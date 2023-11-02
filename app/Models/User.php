@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_japanese',
+        'gender_flag',
+        'age',
+        'hobby_category_id',
     ];
 
     /**
