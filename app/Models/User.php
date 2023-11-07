@@ -11,7 +11,31 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    
+    public function japanese()
+    {
+        return $this->hasOne(Japanese::class);
+    }
+    public function foreignvisitor()
+    {
+        return $this->hasOne(ForeignVisitor::class);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
+    public function hobbycategory()
+    {
+        return $this->belongsTo(HobbyCategory::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
