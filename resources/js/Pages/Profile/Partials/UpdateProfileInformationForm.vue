@@ -6,6 +6,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import { onMounted, ref, watch } from 'vue';
 
+
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
@@ -28,6 +29,7 @@ const form = useForm({
     register_location_id: user.japanese ? user.japanese.register_location_id : '未登録',
     often_go_location_id: user.japanese ? user.japanese.often_go_location_id : '未登録',
 });
+
 
 // const selectedRegion = ref('');
 

@@ -24,3 +24,4 @@ class Japanese extends Model
         'often_go_location_id',
     ];
 }
+

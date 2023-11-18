@@ -4,6 +4,7 @@ import { Head } from '@inertiajs/vue3';
 import { useForm, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 
+
 const user = usePage().props.auth.user;
 
 const form = useForm({
@@ -21,6 +22,7 @@ onMounted(() => {
     console.log(user.japanese);
     console.log(user.japanese ? user.japanese.register_location_id: '未登録')
 })
+
 
 
 </script>
