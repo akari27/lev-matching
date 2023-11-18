@@ -23,4 +23,13 @@ class JapanLocation extends Model
     {
         return $this->belongsTo(JapanRegion::class);
     }
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'is_japanese',
+        'gender_flag',
+        'age',
+        'hobby_category_id',
+    ];
 }
