@@ -49,6 +49,7 @@ class User extends Authenticatable
         'gender_flag',
         'age',
         'hobby_category_id',
+        'comment',
     ];
 
     /**

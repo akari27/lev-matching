@@ -18,6 +18,13 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'gender_flag' => ['integer', 'max:1'],
+            'age' => ['integer', 'max:100'],
+            'is_japanese' => ['integer', 'max:1'],
+            'comment' => ['string','max:255'],
+            'hobby_category_id' => ['integer','max:100'],
+            'register_location_id' => ['integer','max:100'],
+            'often_go_location_id' => ['integer','max:100'],
         ];
     }
 }
