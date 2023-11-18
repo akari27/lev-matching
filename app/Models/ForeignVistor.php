@@ -17,4 +17,13 @@ class ForeignVistor extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    protected $fillable =[
+        "user_id",
+        "register_location_id",
+        "stay_location_id",
+        "start_of_stay",
+        "end_of_stay",
+        "reason",
+        ]
 }

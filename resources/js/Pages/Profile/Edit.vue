@@ -8,8 +8,13 @@ import { Head } from '@inertiajs/vue3';
 defineProps({
     mustVerifyEmail: Boolean,
     status: String,
+    hobby_categories: Array,
+    japan_regions: Array,
+    japan_locations: Array,
 });
 </script>
+
+
 
 <template>
     <Head title="Profile" />
@@ -25,6 +30,8 @@ defineProps({
                     <UpdateProfileInformationForm
                         :must-verify-email="mustVerifyEmail"
                         :status="status"
+                        :hobby_categories="hobby_categories"
+                        :japan_locations="japan_locations"
                         class="max-w-xl"
                     />
                 </div>
