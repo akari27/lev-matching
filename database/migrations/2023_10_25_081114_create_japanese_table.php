@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('japaneses', function (Blueprint $table) {
+        Schema::create('japanese', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique();
+            $table->foreignId('user_id');
             $table->foreignId('register_location_id')->constrained('japan_locations','id');
             $table->foreignId('often_go_location_id')->constrained('japan_locations','id');
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('japaneses');
+        Schema::dropIfExists('japanese');
     }
 };

@@ -17,10 +17,4 @@ class Japanese extends Model
     {
         return $this->belongsTo(japanlocation::class);
     }
-    
-    protected $fillable = [
-        'user_id',
-        'register_location_id',
-        'often_go_location_id',
-    ];
 }

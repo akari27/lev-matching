@@ -23,8 +23,4 @@ class JapanLocation extends Model
     {
         return $this->belongsTo(JapanRegion::class);
     }
-    
-    protected $fillable = [
-        'name',
-    ];
 }
