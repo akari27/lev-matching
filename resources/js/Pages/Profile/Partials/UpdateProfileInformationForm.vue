@@ -24,28 +24,11 @@ const form = useForm({
     age: user.age,
     is_japanese: user.is_japanese,
     comment: user.comment,
+    image_url: user.image_url,
     hobby_category_id: user.hobby_category_id,
     register_location_id: user.japanese ? user.japanese.register_location_id : '未登録',
     often_go_location_id: user.japanese ? user.japanese.often_go_location_id : '未登録',
 });
-
-// const selectedRegion = ref('');
-
-// // 都道府県のフィルタリング
-// const filterPrefecturesByRegion = () => {
-//     if (selectedRegion.value !== '') {
-//         filteredPrefectures.value = props.japan_locations.filter(prefecture => prefecture.region_id === selectedRegion.value);
-//     } else {
-//         filteredPrefectures.value = [...props.japan_locations];
-//     }
-// };
-// // selectedRegionが変更されたときにfilterPrefecturesByRegionメソッドを実行
-// watch(selectedRegion, filterPrefecturesByRegion);
-
-// // コンポーネントがマウントされたときに都道府県を初期化
-// onMounted(() => {
-//     filterPrefecturesByRegion();
-// });
 
 </script>
 
@@ -59,9 +42,9 @@ const form = useForm({
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
+        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="名前 ※必須" />
 
                 <TextInput
                     id="name"
@@ -77,7 +60,7 @@ const form = useForm({
             </div>
 
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Email ※必須" />
 
                 <TextInput
                     id="email"
@@ -113,8 +96,19 @@ const form = useForm({
             </div>
             
             <div>
-                <p>性別 ※変更不可</p>
-                <p>{{ form.gender_flag == 0 ? '男性' : '女性' }}</p>
+                <InputLabel for="gender_flag" value="性別 ※必須" />
+                <select
+                    id="gender_flag"
+                    type="gender_flag"
+                    class="mt-1 block w-full"
+                    v-model="form.gender_flag"
+                    required
+                    autocomplete="username"
+                >
+                    <option value="0">男性</option>
+                    <option value="1">女性</option>
+                </select>
+                <InputError class="mt-2" :message="form.errors.gender_flag" />
             </div>
             
             <div>
@@ -138,7 +132,7 @@ const form = useForm({
             </div>
             
             <div>
-                <InputLabel for="hobby_category_id" value="Hobby" />
+                <InputLabel for="hobby_category_id" value="Hobby ※必須" />
 
                 <select
                     id="hobby_category_id"
@@ -153,39 +147,9 @@ const form = useForm({
                 <InputError class="mt-2" :message="form.errors.hobby_category_id" />
             </div>
             
-            <!--<div>-->
-            <!--    <InputLabel for="selectedRegion" value="Select Region" />-->
-            <!--    <select-->
-            <!--        id="selectedRegion"-->
-            <!--        type="selectedRegion"-->
-            <!--        class="mt-1 block w-full"-->
-            <!--        v-model="selectedRegion"-->
-            <!--        required-->
-            <!--        autocomplete="username"-->
-            <!--    >-->
-            <!--        <option value="">-- 選択してください --</option>-->
-            <!--        <option v-for="japan_region in props.japan_regions" :value="japan_region.id">{{ japan_region.name }}</option>-->
-            <!--    </select>-->
-            <!--</div>-->
-            
-            <!--<div>-->
-            <!--    <InputLabel for="register_location_id" value="Register Location" />-->
-            <!--    <select-->
-            <!--        id="register_location_id"-->
-            <!--        type="register_location_id"-->
-            <!--        class="mt-1 block w-full"-->
-            <!--        v-model="form.register_location_id"-->
-            <!--        required-->
-            <!--        autocomplete="username"-->
-            <!--    >-->
-            <!--        <option v-for="prefecture in filteredPrefectures" :value="prefecture.id">{{ prefecture.name }}</option>-->
-            <!--    </select>-->
-            <!--    <InputError class="mt-2" :message="form.errors.japanese_location_id" />-->
-            <!--</div>-->
-
             <!--日本人に表示する項目-->
             <div>
-                <InputLabel for="register_location_id" value="住んでいる都道府県" />
+                <InputLabel for="register_location_id" value="RegisterLocation" />
 
                 <select
                     id="register_location_id"
@@ -197,12 +161,12 @@ const form = useForm({
                 >
                     <option v-for="japan_location in props.japan_locations" :value="japan_location.id">{{ japan_location.name }}</option>
                 </select>
-                <InputError class="mt-2" :message="form.errors.japanese_location_id" />
+                <InputError class="mt-2" :message="form.errors.often_go_location_id" />
             </div>
             
             <!--日本人に表示する項目-->
             <div>
-                <InputLabel for="often_go_location_id" value="OftenGorLocation" />
+                <InputLabel for="often_go_location_id" value="OftenGoLocation" />
 
                 <select
                     id="often_go_location_id"
@@ -229,6 +193,19 @@ const form = useForm({
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.comment" />
+            </div>
+            
+            <div>
+                <InputLabel for="image_url" value="image" />
+                <!--v-model="form.image_url"むりそう、どうする-->
+                <input
+                    id="image_url"
+                    type="file"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="username"
+                />
+                <InputError class="mt-2" :message="form.errors.iamge_url" />
             </div>
 
             <div class="flex items-center gap-4">

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -44,6 +45,11 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+        
+        //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        dd($image_url);  //画像のURLを画面に表示
+        
         $request->user()->save();
         $input["user_id"]=Auth::id();
         $input["register_location_id"]=$request["register_location_id"];
