@@ -31,10 +31,15 @@ Route::get('/mypage', function () {
     return Inertia::render('Mypage');
 })->middleware(['auth', 'verified'])->name('mypage');
 
+// Route::get('/mypage', [MypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/foreign/profile', [ForeignProfileController::class, 'edit'])->name('foreignprofile.edit');
+    Route::post('/foreign/profile', [ForeignProfileController::class, 'update'])->name('foreignprofile.update');
+    Route::delete('/foreign/profile', [ForeignProfileController::class, 'destroy'])->name('foreignprofile.destroy');
 });
 
 require __DIR__.'/auth.php';

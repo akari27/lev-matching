@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Japanese;
+use App\Models\ForeignVisitor;
 use App\Models\HobbyCategory;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -56,6 +58,16 @@ class RegisteredUserController extends Controller
             'age' => $request->age,
             'hobby_category_id' => $request->hobby_category_id,
         ]);
+        
+        if($user->is_japanese==1){
+            Japanese::create([
+                'user_id' => $user->id,
+            ]);
+        }else{
+            ForeignVisitor::create([
+                'user_id' => $user->id,
+            ]);
+        }
 
         event(new Registered($user));
 

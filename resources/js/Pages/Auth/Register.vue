@@ -105,8 +105,8 @@ const submit = () => {
                     required
                     autocomplete="is_japanese"
                 >
-                    <option value="0">Japanese</option>
-                    <option value="1">Foreign visitor</option>
+                    <option value="1">Japanese</option>
+                    <option value="0">Foreign visitor</option>
                 </select>
 
                 <InputError class="mt-2" :message="form.errors.is_japanese" />

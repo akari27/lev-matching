@@ -23,13 +23,14 @@ class ProfileController extends Controller
      */
     public function edit(Request $request,HobbyCategory $hobby_category,JapanRegion $japan_region, JapanLocation $japan_location): Response
     {
-        // dd($japan_location->get());
+        // dd(Japanese::where('user_id',Auth::id())->first());
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
             'hobby_categories' => $hobby_category->get(),
             'japan_regions' => $japan_region->get(),
             'japan_locations' => $japan_location->get(),
+            'japanese' => Japanese::where('user_id',Auth::id())->first(),
         ]);
     }
     
@@ -37,7 +38,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request, Japanese $japanese): RedirectResponse
+    public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         // dd($request->all());
         $request->user()->fill($request->validated());
@@ -47,14 +48,16 @@ class ProfileController extends Controller
         }
         
         //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
-        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        dd($image_url);  //画像のURLを画面に表示
-        
+        // dd($request->all());
+        $image_url = Cloudinary::upload($request->file('image_url')->getRealPath())->getSecurePath();
+        // dd($image_url);  //画像のURLを画面に表示
+        $request->user()->image_url=$image_url;
         $request->user()->save();
         $input["user_id"]=Auth::id();
         $input["register_location_id"]=$request["register_location_id"];
         $input["often_go_location_id"]=$request["often_go_location_id"];
         // dd($input);
+        $japanese=Japanese::where('user_id',Auth::id())->first();
         $japanese->fill($input)->save();
         return Redirect::route('profile.edit');
     }
