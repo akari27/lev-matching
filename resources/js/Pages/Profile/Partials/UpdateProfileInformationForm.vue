@@ -13,6 +13,7 @@ const props = defineProps({
     hobby_categories: Array,
     japan_regions: Array,
     japan_locations: Array,
+    japanese: Object,
 });
 
 const user = usePage().props.auth.user;
@@ -26,9 +27,22 @@ const form = useForm({
     comment: user.comment,
     image_url: user.image_url,
     hobby_category_id: user.hobby_category_id,
-    register_location_id: user.japanese ? user.japanese.register_location_id : '未登録',
-    often_go_location_id: user.japanese ? user.japanese.often_go_location_id : '未登録',
+    register_location_id: props.japanese.register_location_id!=null ? props.japanese.register_location_id : '未登録',
+    often_go_location_id: props.japanese.often_go_location_id!=null ? props.japanese.often_go_location_id : '未登録',
 });
+
+function image_save($event){
+    if ($event.target.files[0]==null) return
+    form.image_url = $event.target.files[0]
+    console.log(form.image_url)
+    // const reader = new FileReader()
+    // // imageをreaderにDataURLとしてattachする
+    // reader.readAsDataURL(image)
+    // // readAdDataURLが完了したあと実行される処理
+    // reader.onload = () => {
+    //     form.image_url = reader.result
+    // }
+}
 
 </script>
 
@@ -42,7 +56,7 @@ const form = useForm({
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
+        <form @submit.prevent="form.post(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
                 <InputLabel for="name" value="名前 ※必須" />
 
@@ -128,7 +142,7 @@ const form = useForm({
             
             <div>
                 <p>日本人か外国人か ※変更不可</p>
-                <p>{{ form.is_japanese == 0 ? '日本人' : '外国人' }}</p>
+                <p>{{ form.is_japanese == 1 ? '日本人' : '外国人' }}</p>
             </div>
             
             <div>
@@ -181,7 +195,6 @@ const form = useForm({
                 <InputError class="mt-2" :message="form.errors.often_go_location_id" />
             </div>
             
-            <!--日本人に表示する項目-->
             <div>
                 <InputLabel for="comment" value="Comment" />
                 <TextInput
@@ -197,11 +210,11 @@ const form = useForm({
             
             <div>
                 <InputLabel for="image_url" value="image" />
-                <!--v-model="form.image_url"むりそう、どうする-->
                 <input
                     id="image_url"
                     type="file"
                     class="mt-1 block w-full"
+                    v-on:change="image_save($event)"
                     required
                     autocomplete="username"
                 />

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ForeignVistor extends Model
+class ForeignVisitor extends Model
 {
     use HasFactory;
     
@@ -25,5 +25,5 @@ class ForeignVistor extends Model
         "start_of_stay",
         "end_of_stay",
         "reason",
-        ]
+        ];
 }

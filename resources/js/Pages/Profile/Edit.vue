@@ -11,6 +11,7 @@ defineProps({
     hobby_categories: Array,
     japan_regions: Array,
     japan_locations: Array,
+    japanese: Object,
 });
 </script>
 
@@ -32,6 +33,7 @@ defineProps({
                         :status="status"
                         :hobby_categories="hobby_categories"
                         :japan_locations="japan_locations"
+                        :japanese="japanese"
                         class="max-w-xl"
                     />
                 </div>
