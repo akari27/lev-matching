@@ -74,7 +74,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // return redirect(RouteServiceProvider::HOME);
-        if(Auth::user()->is_japanese==0){
+        if(Auth::user()->is_japanese==1){
             return redirect(RouteServiceProvider::JAPANESE_HOME);
         }else{
             return redirect(RouteServiceProvider::FOREIGN_HOME);

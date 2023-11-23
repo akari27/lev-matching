@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('foreign_visitors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique();
-            $table->foreignId('register_location_id')->nullable()->constrained('countrys','id');
+            $table->foreignId('register_location_id')->nullable()->constrained('countries','id');
             $table->foreignId('stay_location_id')->nullable()->constrained('japan_locations','id');
             $table->date('start_of_stay')->nullable();
             $table->date('end_of_stay')->nullable();

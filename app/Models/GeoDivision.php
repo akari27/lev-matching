@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GeoDivision extends Model
 {
     use HasFactory;
-    public function countrys()
+    public function countries()
     {
         return $this->hasMany(Country::class);
     }

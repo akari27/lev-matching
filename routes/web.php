@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ForeignProfileController;
+use App\Http\Controllers\MypageController;
+use App\Http\Controllers\ForeignMypageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,11 +30,12 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/mypage', function () {
-    return Inertia::render('Mypage');
-})->middleware(['auth', 'verified'])->name('mypage');
+// Route::get('/mypage', function () {
+//     return Inertia::render('Mypage');
+// })->middleware(['auth', 'verified'])->name('mypage');
 
-// Route::get('/mypage', [MypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
+Route::get('/mypage', [MypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
+Route::get('/foreign/mypage', [ForeignMypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

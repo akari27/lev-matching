@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     {
         // パスワードは全員"testtest"
         DB::table('users')->insert([
-            'name' => 'テスト',
+            'name' => 'テスト日本人',
             'email' => 'test@test',
             'password' => '$2y$10$hiMW/YNmlxawhpcKP6FkEO/zAYndpZ1ljDOQ/NUzcTuOgD25WL4ry',
             'gender_flag' => '0',

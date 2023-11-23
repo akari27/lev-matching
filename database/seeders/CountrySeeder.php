@@ -15,15 +15,15 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('countrys')->insert([
+        DB::table('countries')->insert([
                 'geo_division_id' => '1',
                 'name' => 'インドネシア',
         ]);
-        DB::table('countrys')->insert([
+        DB::table('countries')->insert([
                 'geo_division_id' => '2',
                 'name' => 'フランス',
         ]);
-        DB::table('countrys')->insert([
+        DB::table('countries')->insert([
                 'geo_division_id' => '2',
                 'name' => 'オランダ',
         ]);
