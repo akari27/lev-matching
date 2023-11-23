@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if(Auth::user()->is_japanese==0){
+                if(Auth::user()->is_japanese==1){
                     return redirect(RouteServiceProvider::JAPANESE_HOME);
                 }else{
                     return redirect(RouteServiceProvider::FOREIGN_HOME);

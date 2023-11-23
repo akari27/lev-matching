@@ -5,6 +5,11 @@ import { useForm, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 
 const props = defineProps({
+    mustVerifyEmail: Boolean,
+    status: String,
+    hobby_categories: Array,
+    japan_regions: Array,
+    japan_locations: Array,
     japanese: Object,
 });
 
@@ -12,15 +17,16 @@ const user = usePage().props.auth.user;
 
 const form = useForm({
     name: user.name,
+    email: user.email,
     gender_flag: user.gender_flag,
     age: user.age,
     is_japanese: user.is_japanese,
-    hobby_category_id : user.hobby_category_id,
     comment: user.comment,
     image_url: user.image_url,
+    hobby_category_id: user.hobby_category_id,
     register_location_id: props.japanese.register_location_id!=null ? props.japanese.register_location_id : '未登録',
     often_go_location_id: props.japanese.often_go_location_id!=null ? props.japanese.often_go_location_id : '未登録',
-})
+});
 
 onMounted(() => {
     console.log(user.japanese);

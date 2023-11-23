@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     // public const JAPANESE_HOME = 'japanese/profile';
     // public const FOREIGN_HOME = 'foreign/profile';
     
-    public const JAPANESE_HOME = '/dashboard';
+    public const JAPANESE_HOME = '/profile';
     public const FOREIGN_HOME = '/foreign/profile';
 
     /**
