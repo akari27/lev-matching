@@ -16,7 +16,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Japanese::class);
     }
-    public function foreignvisitor()
+    public function foreign_visitor()
     {
         return $this->hasOne(ForeignVisitor::class);
     }

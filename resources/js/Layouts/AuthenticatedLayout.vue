@@ -36,7 +36,13 @@ const showingNavigationDropdown = ref(false);
                             
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('mypage')" :active="route().current('mypage')">
-                                    Mypage
+                                    マイページ
+                                </NavLink>
+                            </div>
+                            
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink :href="route('search.index')" :active="route().current('search.index')">
+                                    検索
                                 </NavLink>
                             </div>
                         </div>

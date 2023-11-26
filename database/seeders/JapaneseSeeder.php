@@ -17,9 +17,9 @@ class JapaneseSeeder extends Seeder
     public function run()
     {
         DB::table('japaneses')->insert([
-                'user_id' => '',
-                'register_location_id' => '',
-                'often_go_location_id' => '',
+                'user_id' => '1',
+                'register_location_id' => '1',
+                'often_go_location_id' => '1',
         ]);
     }
 }
