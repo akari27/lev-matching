@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             JapanRegionSeeder::class,
             JapanLocationSeeder::class,
             HobbyCategorySeeder::class,
+            JapaneseSeeder::class,
+            ForeignVisitorSeeder::class,
         ]);
     }
 }

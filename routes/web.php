@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForeignProfileController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ForeignMypageController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,6 +37,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/mypage', [MypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
 Route::get('/foreign/mypage', [ForeignMypageController::class, 'show'])->middleware(['auth', 'verified'])->name('mypage');
+
+Route::get('/search', [SearchController::class, 'index'])->middleware(['auth', 'verified'])->name('search.index');
+Route::post('/search', [SearchController::class, 'search'])->middleware(['auth', 'verified'])->name('search.search');
+
+// Route::get('/list', [UserListController::class, 'index'])->middleware(['auth', 'verified'])->name('list.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
