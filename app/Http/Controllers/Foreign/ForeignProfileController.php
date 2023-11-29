@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Foreign;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\HobbyCategory;
@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Cloudinary;
+use App\Http\Controllers\Controller;
 
 class ForeignProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request,HobbyCategory $hobby_category,JapanRegion $japan_region, JapanLocation $japan_location, Country $country): Response
+    public function edit(Request $request,HobbyCategory $hobby_category,ForeignVisitor $foreign_visitor, JapanRegion $japan_region, JapanLocation $japan_location, Country $country): Response
     {
-        // dd(ForeignVisitor::where('user_id',Auth::id())->first());
         return Inertia::render('ForeignProfile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
@@ -32,7 +32,7 @@ class ForeignProfileController extends Controller
             'japan_regions' => $japan_region->get(),
             'japan_locations' => $japan_location->get(),
             'countries' => $country->get(),
-            'foreign' => ForeignVisitor::where('user_id',Auth::id())->first(),
+            'foreign' => $foreign_visitor->where('user_id',Auth::id())->first(),
         ]);
     }
     
@@ -40,7 +40,7 @@ class ForeignProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request,ForeignVisitor $foreign_visitor): RedirectResponse
     {
         // dd($request->all());
         $request->user()->fill($request->validated());
@@ -49,11 +49,10 @@ class ForeignProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
         
-        //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
-        // dd($request->all());
-        $image_url = Cloudinary::upload($request->file('image_url')->getRealPath())->getSecurePath();
-        // dd($image_url);  //画像のURLを画面に表示
-        $request->user()->image_url=$image_url;
+        if($request->file('image_url') != null){
+            $image_url = Cloudinary::upload($request->file('image_url')->getRealPath())->getSecurePath();
+            $request->user()->image_url=$image_url;
+        }
         $request->user()->save();
         $input["user_id"]=Auth::id();
         $input["register_location_id"]=$request["register_location_id"];
@@ -61,10 +60,9 @@ class ForeignProfileController extends Controller
         $input["start_of_stay"]=$request["start_of_stay"];
         $input["end_of_stay"]=$request["end_of_stay"];
         $input["reason"]=$request["reason"];
-        // dd($input);
-        $foreign=ForeignVisitor::where('user_id',Auth::id())->first();
+        $foreign=$foreign_visitor->where('user_id',Auth::id())->first();
         $foreign->fill($input)->save();
-        return Redirect::route('foreignprofile.edit');
+        return Redirect::route('foreign.profile.edit');
     }
 
     /**

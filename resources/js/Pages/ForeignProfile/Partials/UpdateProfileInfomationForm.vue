@@ -54,7 +54,7 @@ function image_save($event){
             </p>
         </header>
 
-        <form @submit.prevent="form.post(route('foreignprofile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
+        <form @submit.prevent="form.post(route('foreign.profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
                 <InputLabel for="name" value="名前 ※必須" />
 
@@ -202,7 +202,6 @@ function image_save($event){
                     type="date"
                     class="mt-1 block w-full"
                     v-model="form.start_of_stay"
-                    required
                     autocomplete="username"
                 >
                 <InputError class="mt-2" :message="form.errors.start_of_stay" />
@@ -217,7 +216,6 @@ function image_save($event){
                     type="date"
                     class="mt-1 block w-full"
                     v-model="form.end_of_stay"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.end_of_stay" />
@@ -231,7 +229,6 @@ function image_save($event){
                     type="reason"
                     class="mt-1 block w-full"
                     v-model="form.reason"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.reason" />
@@ -244,7 +241,6 @@ function image_save($event){
                     type="comment"
                     class="mt-1 block w-full"
                     v-model="form.comment"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.comment" />
@@ -257,7 +253,6 @@ function image_save($event){
                     type="file"
                     class="mt-1 block w-full"
                     v-on:change="image_save($event)"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.iamge_url" />

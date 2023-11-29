@@ -9,10 +9,8 @@ import { onMounted, ref, watch } from 'vue';
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
-    // 入れ子構造なので注意　edit.vue
-    hobby_categories: Array,
-    japan_regions: Array,
-    japan_locations: Array,
+    hobbyCategories: Array,
+    japanLocations: Array,
     japanese: Object,
 });
 
@@ -35,14 +33,11 @@ function image_save($event){
     if ($event.target.files[0]==null) return
     form.image_url = $event.target.files[0]
     console.log(form.image_url)
-    // const reader = new FileReader()
-    // // imageをreaderにDataURLとしてattachする
-    // reader.readAsDataURL(image)
-    // // readAdDataURLが完了したあと実行される処理
-    // reader.onload = () => {
-    //     form.image_url = reader.result
-    // }
 }
+
+onMounted(()=>{
+    console.log(props.hobbyCategories);
+})
 
 </script>
 
@@ -74,7 +69,7 @@ function image_save($event){
             </div>
 
             <div>
-                <InputLabel for="email" value="Email ※必須" />
+                <InputLabel for="email" value="Eメール ※必須" />
 
                 <TextInput
                     id="email"
@@ -126,7 +121,7 @@ function image_save($event){
             </div>
             
             <div>
-                <InputLabel for="age" value="Age" />
+                <InputLabel for="age" value="年齢 ※必須" />
 
                 <TextInput
                     id="age"
@@ -142,11 +137,11 @@ function image_save($event){
             
             <div>
                 <p>日本人か外国人か ※変更不可</p>
-                <p>{{ form.is_japanese == 1 ? '日本人' : '外国人' }}</p>
+                <p>{{ form.is_japanese == 1 ? '日本人' : '訪日外国人' }}</p>
             </div>
             
             <div>
-                <InputLabel for="hobby_category_id" value="Hobby ※必須" />
+                <InputLabel for="hobby_category_id" value="趣味 ※必須" />
 
                 <select
                     id="hobby_category_id"
@@ -156,14 +151,14 @@ function image_save($event){
                     required
                     autocomplete="username"
                 >
-                    <option v-for="hobby_category in props.hobby_categories" :value="hobby_category.id">{{ hobby_category.name }}</option>
+                    <option v-for="hobbyCategory in props.hobbyCategories" :value="hobbyCategory.id">{{ hobbyCategory.name }}</option>
                 </select>
                 <InputError class="mt-2" :message="form.errors.hobby_category_id" />
             </div>
             
             <!--日本人に表示する項目-->
             <div>
-                <InputLabel for="register_location_id" value="RegisterLocation" />
+                <InputLabel for="register_location_id" value="住んでいる場所" />
 
                 <select
                     id="register_location_id"
@@ -173,14 +168,14 @@ function image_save($event){
                     required
                     autocomplete="username"
                 >
-                    <option v-for="japan_location in props.japan_locations" :value="japan_location.id">{{ japan_location.name }}</option>
+                    <option v-for="japanLocation in props.japanLocations" :value="japanLocation.id">{{ japanLocation.name }}</option>
                 </select>
-                <InputError class="mt-2" :message="form.errors.often_go_location_id" />
+                <InputError class="mt-2" :message="form.errors.register_location_id" />
             </div>
             
             <!--日本人に表示する項目-->
             <div>
-                <InputLabel for="often_go_location_id" value="OftenGoLocation" />
+                <InputLabel for="often_go_location_id" value="よく行く場所" />
 
                 <select
                     id="often_go_location_id"
@@ -190,19 +185,18 @@ function image_save($event){
                     required
                     autocomplete="username"
                 >
-                    <option v-for="japan_location in props.japan_locations" :value="japan_location.id">{{ japan_location.name }}</option>
+                    <option v-for="japanLocation in props.japanLocations" :value="japanLocation.id">{{ japanLocation.name }}</option>
                 </select>
                 <InputError class="mt-2" :message="form.errors.often_go_location_id" />
             </div>
             
             <div>
-                <InputLabel for="comment" value="Comment" />
+                <InputLabel for="comment" value="ヒトコト" />
                 <TextInput
                     id="comment"
                     type="comment"
                     class="mt-1 block w-full"
                     v-model="form.comment"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.comment" />
@@ -215,7 +209,6 @@ function image_save($event){
                     type="file"
                     class="mt-1 block w-full"
                     v-on:change="image_save($event)"
-                    required
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.iamge_url" />

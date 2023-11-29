@@ -1,36 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Japanese;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\HobbyCategory;
-use App\Models\JapanRegion;
-use App\Models\JapanLocation;
-use App\Models\Japanese;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Japanese;
+use App\Models\HobbyCategory;
+use App\Models\JapanLocation;
+use App\Http\Requests\ProfileUpdateRequest;
 use Cloudinary;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request,HobbyCategory $hobby_category,JapanRegion $japan_region, JapanLocation $japan_location): Response
+    public function edit(Request $request,Japanese $japanese, HobbyCategory $hobby_category, JapanLocation $japan_location): Response
     {
-        // dd(Japanese::where('user_id',Auth::id())->first());
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
-            'hobby_categories' => $hobby_category->get(),
-            'japan_regions' => $japan_region->get(),
-            'japan_locations' => $japan_location->get(),
-            'japanese' => Japanese::where('user_id',Auth::id())->first(),
+            'hobbyCategories' => $hobby_category->get(),
+            'japanLocations' => $japan_location->get(),
+            'japanese' => $japanese->where('user_id',Auth::id())->first(),
         ]);
     }
     
@@ -38,7 +36,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request, Japanese $japanese): RedirectResponse
     {
         // dd($request->all());
         $request->user()->fill($request->validated());
@@ -49,15 +47,16 @@ class ProfileController extends Controller
         
         //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
         // dd($request->all());
-        $image_url = Cloudinary::upload($request->file('image_url')->getRealPath())->getSecurePath();
-        // dd($image_url);  //画像のURLを画面に表示
-        $request->user()->image_url=$image_url;
+        if($request->file('image_url') != null){
+            $image_url = Cloudinary::upload($request->file('image_url')->getRealPath())->getSecurePath();
+            $request->user()->image_url=$image_url;
+        }
         $request->user()->save();
         $input["user_id"]=Auth::id();
         $input["register_location_id"]=$request["register_location_id"];
         $input["often_go_location_id"]=$request["often_go_location_id"];
         // dd($input);
-        $japanese=Japanese::where('user_id',Auth::id())->first();
+        $japanese=$japanese->where('user_id',Auth::id())->first();
         $japanese->fill($input)->save();
         return Redirect::route('profile.edit');
     }

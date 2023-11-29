@@ -7,7 +7,6 @@ import { ref, computed } from 'vue';
 const props = defineProps({
     users: Array,
     japanlocations: Array,
-    countries: Array,
     hobbycategories: Array,
     applications: Array,
 });
@@ -15,10 +14,11 @@ const props = defineProps({
 const user = usePage().props.auth.user;
 
 const form = useForm({
+    name: user.name,
     selectedGender: null,
     selectedHobby: null,
     selectedRegisterLocation: null,
-    selectedStayLocation: null,
+    selectedOftenGoLocation: null,
     selectedUser: null,
 });
 
@@ -27,7 +27,7 @@ function isAllOptions() {
         form.selectedGender === null &&
         form.selectedHobby === null &&
         form.selectedRegisterLocation === null &&
-        form.selectedStayLocation === null
+        form.selectedOftenGoLocation === null
     );
 }
 
@@ -36,7 +36,7 @@ function check() {
         alert("最低1つ条件を選択してください。");
         event.preventDefault();
     } else {
-        form.post(route('search.search'));
+        form.post(route('foreign.search.search'));
     }
 }
 
@@ -44,18 +44,17 @@ function check() {
 function apply(id){
     form.selectedUser=id
     console.log(form.selectedUser)
-    form.post(route('search.apply'))
+    form.post(route('foreign.search.apply'))
 }
 
 function isApplicationSent(id) {
-    // props.applicationの配列の中にreciever_idが同一idのものがあるか？(=申請済みかどうか？)
-    // someメソッドは配列内の各要素(app)に対し、reciever_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
     return props.applications.some(app => app.reciever_id == id);
 }
+
 </script>
 
 <template>
-    <Head title="Serch" />
+    <Head title="ForeignSearch" />
     
     <AuthenticatedLayout>
         <div class="py-12">
@@ -63,8 +62,8 @@ function isApplicationSent(id) {
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pt-8 pb-8">
                     
                     <p class="text-center font-bold text-3xl pb-8">検索</p>
-                    
-                    <form @submit.prevent="form.post(route('search.search'))" >
+
+                    <form @submit.prevent="form.post(route('foreign.search.search'))" >
                         <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                             <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">
                                 <div class="grid justify-items-center">
@@ -76,7 +75,7 @@ function isApplicationSent(id) {
                                             <option value=1>女性</option>
                                         </select>
                                     </div>
-                                    
+                
                                     <div class="m-5">
                                         <label for="selectedHobbyr">趣味:</label>
                                         <select v-model="form.selectedHobby">
@@ -86,16 +85,16 @@ function isApplicationSent(id) {
                                     </div>
                                     
                                     <div class="m-5">
-                                        <label for="selectedRegisterLocation">出身国:</label>
+                                        <label for="selectedRegisterLocation">住んでいる場所:</label>
                                         <select v-model="form.selectedRegisterLocation">
                                             <option :value="null">全て</option>
-                                            <option v-for="country in props.countries" :value= "country.id">{{ country.name }}</option>
+                                            <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
                                         </select>
                                     </div>
                                     
                                     <div class="m-5">
-                                        <label for="selectedStayLocation">訪問場所:</label>
-                                        <select v-model="form.selectedStayLocation">
+                                        <label for="selectedOftenGoLocation">よく行く場所:</label>
+                                        <select v-model="form.selectedOftenGoLocation">
                                             <option :value="null">全て</option>
                                             <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
                                         </select>
@@ -133,15 +132,14 @@ function isApplicationSent(id) {
                                                     <div class="text-base/7">
                                                         <div class="text-xl">
                                                             <p>
-                                                                {{ user.register_location }} 
+                                                                日本
                                                                 {{ user.age }} 歳
                                                                 {{ user.gender_flag == 0 ? '男性' : '女性'}}
                                                             </p>
-                                                            <p>滞在期間: {{ user.foreign_visitor.start_of_stay }} ~ {{ user.foreign_visitor.end_of_stay }}</p>
-                                                            <p>訪問場所:  {{ user.stay_location }}</p>
-                                                            <p>趣味: {{ user.hobby }}</p>
-                                                            <p>訪日理由: {{ user.foreign_visitor.reason }}</p>
-                                                            <p>ヒトコト: {{ user.comment }}</p>
+                                                            <p>居住地 : {{ user.register_location }}</p>
+                                                            <p>よく行く : {{ user.often_go_location }}</p>
+                                                            <p>趣味 : {{ user.hobby }}</p>
+                                                            <p>ヒトコト : {{ user.comment }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
