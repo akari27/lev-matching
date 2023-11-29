@@ -16,7 +16,7 @@ class Application extends Model
     
     protected $fillable = [
         'sender_id',
-        'reciever_id',
+        'receiver_id',
         'permission_flag',
     ];
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sender_id')->constrained('users','id');
-            $table->foreignId('reciever_id')->constrained('users','id');
+            $table->foreignId('receiver_id')->constrained('users','id');
             $table->string('comment')->nullable();
             $table->timestamps();
         });

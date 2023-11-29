@@ -86,7 +86,7 @@ class ForeignSearchController extends Controller
     public function apply(Request $request, User $user, Application $application)
     {
         $input["sender_id"]=Auth::id();
-        $input["reciever_id"]=$request["selectedUser"];
+        $input["receiver_id"]=$request["selectedUser"];
         $input["permission_flag"]=0;
         $application->fill($input)->save();
         return Redirect::route('foreign.search.index');

@@ -21,9 +21,9 @@ function apply(id){
 }
 
 function isApplicationSent(id) {
-    // props.applicationの配列の中にreciever_idが同一idのものがあるか？(=申請済みかどうか？)
-    // someメソッドは配列内の各要素(app)に対し、reciever_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
-    return props.application.some(app => app.reciever_id == id);
+    // props.applicationの配列の中にreceiver_idが同一idのものがあるか？(=申請済みかどうか？)
+    // someメソッドは配列内の各要素(app)に対し、receiver_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
+    return props.application.some(app => app.receiver_id == id);
 }
 </script>
 
@@ -45,7 +45,7 @@ function isApplicationSent(id) {
                                 <div class="flex">
                                     <div class="flex-1">
                                         <div class="grid justify-items-center">
-                                            <img :src="user.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" width="100" height="100"/>
+                                            <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'"  width="100" height="100"/>
                                             <p class="font-bold text-2xl">{{ user.name }}</p>
                                             <form @submit.prevent="apply(user.id)" >
                                                 <p v-if="isApplicationSent(user.id)">申請済み</p>

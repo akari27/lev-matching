@@ -48,7 +48,7 @@ function apply(id){
 }
 
 function isApplicationSent(id) {
-    return props.applications.some(app => app.reciever_id == id);
+    return props.applications.some(app => app.receiver_id == id);
 }
 
 </script>
