@@ -22,7 +22,7 @@ class ForeignVisitorSeeder extends Seeder
                 'stay_location_id' => '1',
                 'start_of_stay' => '2023-01-20',
                 'end_of_stay' => '2023-01-30',
-                'reason' => 'たのしみ',
+                'reason' => '日本の音楽が好きでライブに行きたいから',
         ]);
         DB::table('foreign_visitors')->insert([
                 'user_id' => '8',
@@ -30,7 +30,7 @@ class ForeignVisitorSeeder extends Seeder
                 'stay_location_id' => '2',
                 'start_of_stay' => '2023-01-20',
                 'end_of_stay' => '2023-01-30',
-                'reason' => 'たのしみ',
+                'reason' => '観光したい',
         ]);
         DB::table('foreign_visitors')->insert([
                 'user_id' => '9',
@@ -38,7 +38,7 @@ class ForeignVisitorSeeder extends Seeder
                 'stay_location_id' => '3',
                 'start_of_stay' => '2023-01-20',
                 'end_of_stay' => '2023-01-30',
-                'reason' => 'たのしみ',
+                'reason' => '日本食をたのしみたい',
         ]);
          DB::table('foreign_visitors')->insert([
                 'user_id' => '10',
@@ -46,7 +46,7 @@ class ForeignVisitorSeeder extends Seeder
                 'stay_location_id' => '1',
                 'start_of_stay' => '2023-01-20',
                 'end_of_stay' => '2023-01-30',
-                'reason' => 'たのしみ',
+                'reason' => '日本の音楽が好きでライブに行きたいから',
         ]);
         DB::table('foreign_visitors')->insert([
                 'user_id' => '11',
@@ -54,7 +54,7 @@ class ForeignVisitorSeeder extends Seeder
                 'stay_location_id' => '2',
                 'start_of_stay' => '2023-01-20',
                 'end_of_stay' => '2023-01-30',
-                'reason' => 'たのしみ',
+                'reason' => '買い物したい',
         ]);
     }
 }

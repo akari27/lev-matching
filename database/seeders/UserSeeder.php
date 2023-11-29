@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             'age' => '0',
             'is_japanese' => '1',
             'hobby_category_id' => '1',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1700989424/sckqod2emfnlerzilrv5.png',
         ]);
         // 日本人
         DB::table('users')->insert([
@@ -36,6 +37,7 @@ class UserSeeder extends Seeder
             'is_japanese' => '1',
             'hobby_category_id' => '1',
             'comment' => '最近はカフェ巡りが趣味で、神奈川の海沿いのカフェがお気に入りです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701073198/bh31shlxopemtmqgxmoi.jpg',
         ]);
         DB::table('users')->insert([
             'name' => '山田太郎',
@@ -45,7 +47,8 @@ class UserSeeder extends Seeder
             'age' => '35',
             'is_japanese' => '1',
             'hobby_category_id' => '2',
-            'comment' => '仕事が忙しい日々ですが、週末には京都で歴史を感じながら散歩するのが癒しです。'
+            'comment' => '仕事が忙しい日々ですが、週末には京都で歴史を感じながら散歩するのが癒しです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1700989424/sckqod2emfnlerzilrv5.png',
         ]);
         DB::table('users')->insert([
             'name' => '伊藤悠美',
@@ -55,7 +58,8 @@ class UserSeeder extends Seeder
             'age' => '24',
             'is_japanese' => '1',
             'hobby_category_id' => '3',
-            'comment' => '北海道の良いところ案内できます。'
+            'comment' => '北海道の良いところ案内できます。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701073198/bh31shlxopemtmqgxmoi.jpg',
         ]);
         DB::table('users')->insert([
             'name' => '渡辺健太',
@@ -65,7 +69,8 @@ class UserSeeder extends Seeder
             'age' => '31',
             'is_japanese' => '1',
             'hobby_category_id' => '1',
-            'comment' => '九州の美味しいものを求めて、週末には佐賀までドライブに行くことがよくあります。'
+            'comment' => '九州の美味しいものを求めて、週末には佐賀までドライブに行くことがよくあります。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1700989424/sckqod2emfnlerzilrv5.png',
         ]);
         DB::table('users')->insert([
             'name' => '中村美咲',
@@ -75,7 +80,8 @@ class UserSeeder extends Seeder
             'age' => '22',
             'is_japanese' => '1',
             'hobby_category_id' => '2',
-            'comment' => '京都の伝統と文化が大好きです。琵琶湖も好きです。'
+            'comment' => '京都の伝統と文化が大好きです。琵琶湖も好きです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701073198/bh31shlxopemtmqgxmoi.jpg',
         ]);
         
         // 外国人
@@ -87,7 +93,8 @@ class UserSeeder extends Seeder
             'age' => '30',
             'is_japanese' => '0',
             'hobby_category_id' => '1',
-            'comment' => '日本の伝統的なお寺や神社を巡りながら、美しい桜を楽しむのが楽しみです。'
+            'comment' => '日本の伝統的なお寺や神社を巡りながら、美しい桜を楽しむのが楽しみです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701072950/mafkygf7mnq5fivkvtnf.png',
         ]);
         DB::table('users')->insert([
             'name' => 'Juan Rodriguez',
@@ -97,7 +104,8 @@ class UserSeeder extends Seeder
             'age' => '25',
             'is_japanese' => '0',
             'hobby_category_id' => '2',
-            'comment' => '日本の先進的なテクノロジーとアートに触れるのが楽しみです。'
+            'comment' => '日本の先進的なテクノロジーとアートに触れるのが楽しみです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701072921/prv84gxut3epxastvlcx.png'
         ]);
         DB::table('users')->insert([
             'name' => 'Aya Khan',
@@ -107,7 +115,8 @@ class UserSeeder extends Seeder
             'age' => '28',
             'is_japanese' => '0',
             'hobby_category_id' => '3',
-            'comment' => 'お好み焼きが楽しみです。'
+            'comment' => 'お好み焼きが楽しみです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701072950/mafkygf7mnq5fivkvtnf.png',
         ]);
         DB::table('users')->insert([
             'name' => 'Luca Ferrari',
@@ -117,7 +126,8 @@ class UserSeeder extends Seeder
             'age' => '35',
             'is_japanese' => '0',
             'hobby_category_id' => '1',
-            'comment' => '北海道の雪まつりは写真で見たことがあり、実際に体験するのが楽しみです。'
+            'comment' => '北海道の雪まつりは写真で見たことがあり、実際に体験するのが楽しみです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701072921/prv84gxut3epxastvlcx.png',
         ]);
         DB::table('users')->insert([
             'name' => 'Mei Chen',
@@ -127,7 +137,8 @@ class UserSeeder extends Seeder
             'age' => '22',
             'is_japanese' => '0',
             'hobby_category_id' => '2',
-            'comment' => '日本の伝統的な神社やお祭りに参加するのが楽しみです。'
+            'comment' => '日本の伝統的な神社やお祭りに参加するのが楽しみです。',
+            'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701072950/mafkygf7mnq5fivkvtnf.png',
         ]);
     }
 }

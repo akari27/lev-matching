@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('reciever_id')->constrained('users','id');
             $table->integer('permission_flag');
             $table->timestamps();
+            // sender_idとreciever_idの各組み合わせは単一であってほしい(同じユーザに複数申請だめ)
+            $table->unique(['sender_id', 'reciever_id']);
         });
     }
 

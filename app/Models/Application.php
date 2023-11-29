@@ -13,4 +13,10 @@ class Application extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    protected $fillable = [
+        'sender_id',
+        'reciever_id',
+        'permission_flag',
+    ];
 }
