@@ -48,9 +48,9 @@ function apply(id){
 }
 
 function isApplicationSent(id) {
-    // props.applicationの配列の中にreciever_idが同一idのものがあるか？(=申請済みかどうか？)
-    // someメソッドは配列内の各要素(app)に対し、reciever_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
-    return props.applications.some(app => app.reciever_id == id);
+    // props.applicationの配列の中にreceiver_idが同一idのものがあるか？(=申請済みかどうか？)
+    // someメソッドは配列内の各要素(app)に対し、receiver_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
+    return props.applications.some(app => app.receiver_id == id);
 }
 </script>
 

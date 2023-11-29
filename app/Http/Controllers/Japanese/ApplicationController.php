@@ -20,7 +20,7 @@ class ApplicationController extends Controller
         $sendApplications=$application->where('sender_id',Auth::id())->where('permission_flag',0)->get();
         $sendApplications->each(function ($send) use($user, $hobby_category, $country, $japan_location)
             {
-                $s=$user->with('foreign_visitor')->where('id',$send->reciever_id)->first();
+                $s=$user->with('foreign_visitor')->where('id',$send->receiver_id)->first();
                 
                 $hobbyId = $s->hobby_category_id;
                 $registerLocationId = $s->foreign_visitor->register_location_id;
@@ -36,7 +36,7 @@ class ApplicationController extends Controller
                 $send->add_info = $s;
             });
             
-        $recieveApplications=$application->where('reciever_id',Auth::id())->where('permission_flag',0)->get();
+        $recieveApplications=$application->where('receiver_id',Auth::id())->where('permission_flag',0)->get();
         $recieveApplications->each(function ($recieve) use($user, $hobby_category, $country, $japan_location)
             {
                 $r=$user->with('foreign_visitor')->where('id',$recieve->sender_id)->first();
@@ -57,12 +57,12 @@ class ApplicationController extends Controller
 
         $approvedApplications = $application->where(function($query) {
             $query->where('sender_id', Auth::id())
-                  ->orWhere('reciever_id', Auth::id());
+                  ->orWhere('receiver_id', Auth::id());
         })->where('permission_flag', 1)->get();
         $approvedApplications->each(function ($approved) use($user, $hobby_category, $country, $japan_location)
             {
                 if($approved->sender_id==Auth::id()){
-                    $userId=$approved->reciever_id;
+                    $userId=$approved->receiver_id;
                 }
                 else{
                     $userId=$approved->sender_id;
@@ -93,7 +93,7 @@ class ApplicationController extends Controller
     
     public function permission(Request $request,Application $application)
     {
-        $app=$application->where('sender_id',$request["senderId"])->where('reciever_id',Auth::id())->first();
+        $app=$application->where('sender_id',$request["senderId"])->where('receiver_id',Auth::id())->first();
         $input["permission_flag"]=1;
         $app->fill($input)->save();
         return Redirect::route('application.index');
@@ -101,7 +101,7 @@ class ApplicationController extends Controller
     
     public function reject(Request $request,Application $application)
     {
-        $app=$application->where('sender_id',$request["senderId"])->where('reciever_id',Auth::id())->first();
+        $app=$application->where('sender_id',$request["senderId"])->where('receiver_id',Auth::id())->first();
         $input["permission_flag"]=-1;
         $app->fill($input)->save();
         return Redirect::route('application.index');

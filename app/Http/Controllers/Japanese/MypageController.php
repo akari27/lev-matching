@@ -18,8 +18,12 @@ class MypageController extends Controller
     {
         $user=$user->where('id',Auth::id())->with('japanese')->first();
         $user_data['hobby_category']=$hobby_category->where('id',$user['hobby_category_id'])->first()->name;
-        $user_data['register_location']=$japan_location->where('id',$user->japanese['register_location_id'])->first()->name;
-        $user_data['often_go_location']=$japan_location->where('id',$user->japanese['often_go_location_id'])->first()->name;
+        if($user->japanese['register_location_id'] != null){
+            $user_data['register_location']=$japan_location->where('id',$user->japanese['register_location_id'])->first()->name;
+        }
+        if($user->japanese['often_go_location_id'] != null){
+            $user_data['often_go_location']=$japan_location->where('id',$user->japanese['often_go_location_id'])->first()->name;
+        }
         return Inertia::render('Mypage', [
             'user_data' => $user_data
         ]);
