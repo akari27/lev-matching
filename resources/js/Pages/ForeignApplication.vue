@@ -45,7 +45,7 @@ function reject(id){
                                 <div class="flex">
                                     <div class="flex-1">
                                         <div class="grid justify-items-center">
-                                            <img :src="send.add_info.image_url" alt="画像が読み込めません。" width="100" height="100"/>
+                                            <img :src="send.add_info.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" width="100" height="100"/>
                                             <p class="font-bold text-2xl">{{ send.add_info.name }}</p>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@ function reject(id){
                                 <div class="flex">
                                     <div class="flex-1">
                                         <div class="grid justify-items-center">
-                                            <img :src="recieve.add_info.image_url" alt="画像が読み込めません。" width="100" height="100"/>
+                                            <img :src="recieve.add_info.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" width="100" height="100"/>
                                             <p class="font-bold text-2xl">{{ recieve.add_info.name }}</p>
                                             <form @submit.prevent="permission(recieve.sender_id)" >
                                                 <input type="submit" value='承認'/>
@@ -119,7 +119,7 @@ function reject(id){
                                 <div class="flex">
                                     <div class="flex-1">
                                         <div class="grid justify-items-center">
-                                            <img :src="approved.add_info.image_url" alt="画像が読み込めません。" width="100" height="100"/>
+                                            <img :src="approved.add_info.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" width="100" height="100"/>
                                             <p class="font-bold text-2xl">{{ approved.add_info.name }}</p>
                                         </div>
                                     </div>

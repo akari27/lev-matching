@@ -45,7 +45,7 @@ function isApplicationSent(id) {
                                 <div class="flex">
                                     <div class="flex-1">
                                         <div class="grid justify-items-center">
-                                            <img :src="user.image_url" alt="画像が読み込めません。" width="100" height="100"/>
+                                            <img :src="user.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" width="100" height="100"/>
                                             <p class="font-bold text-2xl">{{ user.name }}</p>
                                             <form @submit.prevent="apply(user.id)" >
                                                 <p v-if="isApplicationSent(user.id)">申請済み</p>

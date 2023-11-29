@@ -25,7 +25,7 @@ const user = usePage().props.auth.user;
                                 <div class="flex-1">
                                     <div class="grid justify-items-center">
                                         <div class="overflow-hidden rounded-full w-48 h-48">
-                                            <img :src="user.image_url" alt="画像が読み込めません。" class="w-full h-full object-cover" />
+                                            <img :src="user.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" class="w-full h-full object-cover" />
                                         </div>
                                         <a :href="route('foreign.profile.edit')"><button>プロフィール編集</button></a>
                                     </div>
