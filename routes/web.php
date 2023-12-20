@@ -10,6 +10,7 @@ use App\Http\Controllers\Foreign\ForeignProfileController;
 use App\Http\Controllers\Foreign\ForeignMypageController;
 use App\Http\Controllers\Foreign\ForeignSearchController;
 use App\Http\Controllers\Foreign\ForeignApplicationController;
+use App\Http\Controllers\Foreign\ForeignChatController;
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/foreign/application', [ForeignApplicationController::class, 'index'])->name('foreign.application.index');
     Route::post('/foreign/application/permission', [ForeignApplicationController::class, 'permission'])->name('foreign.application.permission');
     Route::post('/foreign/application/reject', [ForeignApplicationController::class, 'reject'])->name('foreign.application.reject');
+    Route::get('/foreign/chat', [ForeignChatController::class, 'index'])->name('foreign.chat.index');
+    Route::get('/foreign/chat/{user}', [ForeignChatController::class, 'show'])->name('foreign.chat.show');
+    Route::post('/foreign/chat/{user}', [ForeignChatController::class, 'send'])->name('foreign.chat.send');
 });
 
 require __DIR__.'/auth.php';

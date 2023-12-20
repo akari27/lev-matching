@@ -20,30 +20,49 @@ defineProps({
 
 <template>
     <Head title="Profile" />
-
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>
-        </template>
-
-        <div class="py-8">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        :hobby_categories="hobby_categories"
-                        :japan_locations="japan_locations"
-                        :countries="countries"
-                        :foreign="foreign"
-                        class="max-w-xl"
-                    />
+    <div class="bg-[#fff7eeff] px-8 py-4">
+        <AuthenticatedLayout>
+            <div class="py-12">
+                <p class="text-center font-bold text-3xl pb-4 text-[#006f89]">プロフィール編集</p>
+                <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
+                    
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                        <div class="bg-[#006f89] overflow-hidden">
+                            <p class="text-center font-bold text-2xl text-white mt-4 mb-4">基本情報</p>
+                        </div>
+                        
+                        <div class="flex justify-center">
+                            <UpdateProfileInformationForm
+                                :must-verify-email="mustVerifyEmail"
+                                :status="status"
+                                :hobby_categories="hobby_categories"
+                                :japan_locations="japan_locations"
+                                :countries="countries"
+                                :foreign="foreign"
+                                class="max-w-xl"
+                            />
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                        <div class="bg-[#006f89] overflow-hidden">
+                            <p class="text-center font-bold text-2xl text-white mt-4 mb-4">パスワード更新</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <UpdatePasswordForm class="max-w-xl flex justify-center" />
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                        <div class="bg-[#006f89] overflow-hidden">
+                            <p class="text-center font-bold text-2xl text-white mt-4 mb-4">アカウント削除</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <DeleteUserForm class="max-w-xl" />
+                        </div>
+                    </div>
                 </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl" />
-                </div>
-    </AuthenticatedLayout>
+            </div>
+        </AuthenticatedLayout>
+    </div>
 </template>

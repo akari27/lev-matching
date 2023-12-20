@@ -55,54 +55,56 @@ function isApplicationSent(id) {
 
 <template>
     <Head title="ForeignSearch" />
-    
-    <AuthenticatedLayout>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pt-8 pb-8">
-                    
-                    <p class="text-center font-bold text-3xl">検索</p>
-
-                    <form @submit.prevent="form.post(route('foreign.search.search'))" >
-                        <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                            <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">
-                                <div class="grid justify-items-center">
-                                    <div class="m-5">
-                                        <label for="selectedGender">性別:</label>
-                                        <select v-model="form.selectedGender">
-                                            <option value="null">全て</option>
-                                            <option value=0>男性</option>
-                                            <option value=1>女性</option>
-                                        </select>
-                                    </div>
-                
-                                    <div class="m-5">
-                                        <label for="selectedHobbyr">趣味:</label>
-                                        <select v-model="form.selectedHobby">
-                                            <option :value="null">全て</option>
-                                            <option v-for="hobby_category in props.hobbycategories" :value= "hobby_category.id">{{ hobby_category.name }}</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="m-5">
-                                        <label for="selectedRegisterLocation">住んでいる場所:</label>
-                                        <select v-model="form.selectedRegisterLocation">
-                                            <option :value="null">全て</option>
-                                            <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="m-5">
-                                        <label for="selectedOftenGoLocation">よく行く場所:</label>
-                                        <select v-model="form.selectedOftenGoLocation">
-                                            <option :value="null">全て</option>
-                                            <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
-                                        </select>
-                                    </div>
-                    
-                                    <!-- submit -->
+    <div class="bg-[#fff7eeff] px-8 py-4">
+        <AuthenticatedLayout>
+            <div class="py-8">
+                <p class="text-center font-bold text-3xl text-[#006f89]">検索</p>
+                <form @submit.prevent="form.post(route('foreign.search.search'))" >
+                    <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
+                        <div class="bg-white overflow-hidden shadow-md rounded-lg pb-4 mt-8 mb-8">
+                            
+                            <div class="bg-[#006f89] overflow-hidden">
+                                <p class="text-center font-bold text-2xl text-white mt-4 mb-4">条件を選んでください</p>
+                            </div>
+                            
+                            <div class="grid justify-center">
+                                <div class="mt-4">
+                                    <label for="selectedGender" class="block text-[#00323e]">性別</label>
+                                    <select v-model="form.selectedGender" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] outline-none w-48">
+                                        <option value="null">全て</option>
+                                        <option value=0>男性</option>
+                                        <option value=1>女性</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <label for="selectedHobbyr" class="block text-[#00323e]">趣味</label>
+                                    <select v-model="form.selectedHobby" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] focus:outline-none w-48">
+                                        <option :value="null">全て</option>
+                                        <option v-for="hobby_category in props.hobbycategories" :value= "hobby_category.id">{{ hobby_category.name }}</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <label for="selectedRegisterLocation" class="block text-[#00323e]">住んでいる場所</label>
+                                    <select v-model="form.selectedRegisterLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
+                                        <option :value="null">全て</option>
+                                        <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <label for="selectedOftenGoLocation" class="block -[#00323e]">よくいく場所</label>
+                                    <select v-model="form.selectedOftenGoLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
+                                        <option :value="null">全て</option>
+                                        <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- submit -->
+                                <div class="mt-4 text-center">
                                     <button
-                                        class=""
+                                        class="bg-[#006f89] text-white rounded-lg w-20"
                                         type="submit"
                                         :disabled="form.processing"
                                         @click="check">
@@ -111,35 +113,67 @@ function isApplicationSent(id) {
                                 </div>
                             </div>
                         </div>
-                                
-                        <div v-for="user in props.users" :key="user.id">
-                            <form @submit.prevent="apply(user.id)" >
-                                <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                                    <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">
-                                        <div class="flex">
-                                            <div class="flex-1">
-                                                <div class="grid justify-items-center">
-                                                    <div class="overflow-hidden rounded-full w-48 h-48">
-                                                        <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" class="w-full h-full object-cover" />
-                                                    </div>
-                                                    <p class="font-bold text-2xl">{{ user.name }}</p>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div v-if="props.users!=null">
+                        <div class="text-center text-lg font-bold text-[#e35748]">
+                            <p v-if="props.users.length==0">ユーザが見つかりませんでした。</p>
+                            <p v-else>{{ props.users.length }}人見つかりました。</p>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!--検索結果の表示-->
+                    <div v-for="user in props.users" :key="user.id">
+                        <form @submit.prevent="apply(user.id)" >
+                            <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
+                                <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
+                                    <div class="flex">
+                                        <div class="flex items-center justify-center basis-1/3 bg-[#fdc562ff]">
+                                            <div class="grid justify-items-center">
+                                                <div class="overflow-hidden rounded-full w-32 h-32">
+                                                    <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" class="bg-white" />
+                                                </div>
+                                                <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
                                                     <p v-if="isApplicationSent(user.id)">申請済み</p>
-                                                    <input v-else type="submit" value='申請'/>
+                                                    <input v-else type="submit" class="font-bold" value='申請'/>
                                                 </div>
                                             </div>
-                                            <div class="flex-1">
-                                                <div class="grid justify-items-center">
-                                                    <div class="text-base/7">
-                                                        <div class="text-xl">
-                                                            <p>
-                                                                日本
-                                                                {{ user.age }} 歳
-                                                                {{ user.gender_flag == 0 ? '男性' : '女性'}}
-                                                            </p>
-                                                            <p>居住地 : {{ user.register_location }}</p>
-                                                            <p>よく行く : {{ user.often_go_location }}</p>
-                                                            <p>趣味 : {{ user.hobby }}</p>
-                                                            <p>ヒトコト : {{ user.comment }}</p>
+                                        </div>
+                                        
+                                        
+                                        <div class="flex basis-2/3 p-8">
+                                            <div class="grid justify-items-center">
+                                                <div class="text-base/7 text-[#004758]">
+                                                    <span class="font-bold text-2xl">{{ user.name }}</span>
+                                                    <span class="text-lg ml-2">
+                                                        日本
+                                                        {{ user.age }} 歳
+                                                        {{ user.gender_flag == 0 ? '男性' : '女性'}}
+                                                    </span>
+                                                    <div class="text-lg">
+                                                        <div class="mt-4">
+                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
+                                                            <span class="font-bold text-xl pl-4">{{ user.register_location }}</span>
+                                                        </div>
+                                                        
+                                                        <div class="mt-2">
+                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く場所</span>
+                                                            <span class="font-bold text-xl pl-4">{{ user.often_go_location }}</span>
+                                                        </div>
+                                                        
+                                                        <div class="mt-2">
+                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
+                                                            <span class="font-bold text-xl pl-4">{{ user.hobby }}</span>
+                                                        </div>
+                                                        
+                                                        <div class="mt-2">
+                                                            <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
+                                                            <p class="font-bold text-xl pl-4">{{ user.comment }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -147,11 +181,11 @@ function isApplicationSent(id) {
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </form>
-                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
             </div>
-        </div>
-    </AuthenticatedLayout>
+        </AuthenticatedLayout>
+    </div>
 </template>

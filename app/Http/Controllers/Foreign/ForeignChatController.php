@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Japanese;
+namespace App\Http\Controllers\Foreign;
 
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
 
-class ChatController extends Controller
+class ForeignChatController extends Controller
 {
     public function index(User $user, Application $application)
     {
@@ -30,12 +30,12 @@ class ChatController extends Controller
             else{
                 $userId=$approved->sender_id;
             }
-            $approved->user_id=$user->with('japanese')->where('id',$userId)->first()->id;
-            $approved->name=$user->with('japanese')->where('id',$userId)->first()->name;
-            $approved->image_url=$user->with('japanese')->where('id',$userId)->first()->image_url;
+            $approved->user_id=$user->with('foreign_visitor')->where('id',$userId)->first()->id;
+            $approved->name=$user->with('foreign_visitor')->where('id',$userId)->first()->name;
+            $approved->image_url=$user->with('foreign_visitor')->where('id',$userId)->first()->image_url;
         });
         
-        return Inertia::render('Chat/FriendsList',[
+        return Inertia::render('ForeignChat/ForeignFriendsList',[
             'approvedApplications'=>$approvedApplications,
         ]);
     }
@@ -49,7 +49,7 @@ class ChatController extends Controller
                         $query->where('sender_id', $user_id)->where('receiver_id', Auth::id());
                     });
         })->get();
-        return Inertia::render('Chat/Message',[
+        return Inertia::render('ForeignChat/ForeignMessage',[
             'user'=>$user,
             'messages'=>$messages,
         ]);
