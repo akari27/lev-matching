@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
             'status' => session('status'),
         ]);
     }
-
+    
     /**
      * Handle an incoming authentication request.
      */
