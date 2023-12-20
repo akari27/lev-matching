@@ -61,10 +61,10 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             
                             <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.show')" :active="route().current('chat.show')">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index')">
                                     チャット
                                 </NavLink>
-                                <NavLink v-else :href="route('chat.show')" :active="route().current('chat.show')">
+                                <NavLink v-else :href="route('chat.index')" :active="route().current('chat.index')">
                                     Chat
                                 </NavLink>
                             </div>
@@ -160,7 +160,7 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                     </div>
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink :href="route('chat.show')" :active="route().current('chat.show')">
+                        <ResponsiveNavLink :href="route('chat.index')" :active="route().current('chat.index')">
                             チャット
                         </ResponsiveNavLink>
                     </div>
