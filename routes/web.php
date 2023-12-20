@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/application', [ApplicationController::class, 'index'])->name('application.index');
     Route::post('/application/permission', [ApplicationController::class, 'permission'])->name('application.permission');
     Route::post('/application/reject', [ApplicationController::class, 'permission'])->name('application.permission');
-    Route::get('/chat', [ChatController::class, 'show'])->name('chat.show');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
 
     Route::get('/foreign/profile', [ForeignProfileController::class, 'edit'])->name('foreign.profile.edit');
     Route::post('/foreign/profile', [ForeignProfileController::class, 'update'])->name('foreign.profile.update');

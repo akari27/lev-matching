@@ -18,7 +18,10 @@ const user = usePage().props.auth.user;
             <div class="py-8">
                 <p class="text-center font-bold text-3xl text-[#006f89]">チャット</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                    チャット画面です。
+                    繋がったユーザー
+                    <!--ユーザ名と画像-->
+                    
+                    選択しているユーザ
                 </div>
             </div>
         </AuthenticatedLayout>
