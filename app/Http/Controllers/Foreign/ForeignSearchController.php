@@ -47,14 +47,14 @@ class ForeignSearchController extends Controller
         }
         
         if ($request->filled('selectedRegisterLocation')) {
-            // foreign_visitorリレーションを介してregister_location_idを指定
-            $query->whereHas('foreign_visitor', function ($q) use ($request) {
+            // japaneseリレーションを介してregister_location_idを指定
+            $query->whereHas('japanese', function ($q) use ($request) {
                 $q->where('register_location_id', $request->selectedRegisterLocation);
         });
         }
         
         if ($request->filled('selectedOftenGoLocation')) {
-            $query->whereHas('foreign_visitor', function ($q) use ($request) {
+            $query->whereHas('japanese', function ($q) use ($request) {
                 $q->where('often_go_location_id', $request->selectedOftenGoLocation);
         });
         }

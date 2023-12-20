@@ -83,14 +83,6 @@ const updatePassword = () => {
             <div class="text-center">
                 <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
             </div>
-
-            <!--<div class="flex items-center gap-4">-->
-            <!--    <PrimaryButton :disabled="form.processing">保存</PrimaryButton>-->
-
-            <!--    <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">-->
-            <!--        <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">保存しました。</p>-->
-            <!--    </Transition>-->
-            <!--</div>-->
         </form>
     </section>
 </template>

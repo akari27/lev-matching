@@ -64,7 +64,7 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index')">
                                     チャット
                                 </NavLink>
-                                <NavLink v-else :href="route('chat.index')" :active="route().current('chat.index')">
+                                <NavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index')">
                                     Chat
                                 </NavLink>
                             </div>
@@ -99,7 +99,8 @@ const showingNavigationDropdown = ref(false);
                                     <template #content>
                                         <!--<DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>-->
                                         <DropdownLink :href="route('logout')" method="post" as="button">
-                                            ログアウト
+                                            <span v-if="$page.props.auth.user.is_japanese==1">ログアウト</span>
+                                            <span v-else>ログアウト</span>
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -145,23 +146,35 @@ const showingNavigationDropdown = ref(false);
                     class="lg:hidden bg-[#fffcf7ff] py-2 mt-2"
                 >
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink :href="route('mypage')" :active="route().current('mypage')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage')">
                             マイページ
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink v-else :href="route('foreign.mypage')" :active="route().current('foreign.mypage')">
+                            Mypage
+                        </ResponsiveNavLink>
                     </div>
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink :href="route('search.index')" :active="route().current('search.index')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index')">
                             検索
                         </ResponsiveNavLink>
-                    </div>
-                    <div class="py-2 space-y-1">
-                        <ResponsiveNavLink :href="route('application.index')" :active="route().current('application.index')">
-                            申請リスト
+                        <ResponsiveNavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index')">
+                            Search
                         </ResponsiveNavLink>
                     </div>
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink :href="route('chat.index')" :active="route().current('chat.index')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('application.index')" :active="route().current('application.index')">
+                            申請リスト
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink v-else :href="route('foreign.application.index')" :active="route().current('foreign.application.index')">
+                            ApplicationsList
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="py-2 space-y-1">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index')">
                             チャット
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index')">
+                            Chat
                         </ResponsiveNavLink>
                     </div>
                     
@@ -170,7 +183,8 @@ const showingNavigationDropdown = ref(false);
                     <!-- Responsive Settings Options -->
                     <div class="py-2 space-y-1">
                         <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                            ログアウト
+                            <span v-if="$page.props.auth.user.is_japanese==1">ログアウト</span>
+                            <span v-else>ログアウト</span>
                         </ResponsiveNavLink>
                     </div>
                 </div>
