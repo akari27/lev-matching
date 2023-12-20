@@ -61,7 +61,7 @@ function isApplicationSent(id) {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pt-8 pb-8">
                     
-                    <p class="text-center font-bold text-3xl pb-8">検索</p>
+                    <p class="text-center font-bold text-3xl">検索</p>
 
                     <form @submit.prevent="form.post(route('foreign.search.search'))" >
                         <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
@@ -120,7 +120,7 @@ function isApplicationSent(id) {
                                             <div class="flex-1">
                                                 <div class="grid justify-items-center">
                                                     <div class="overflow-hidden rounded-full w-48 h-48">
-                                                        <img :src="user.image_url" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" class="w-full h-full object-cover" />
+                                                        <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" alt="https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png" class="w-full h-full object-cover" />
                                                     </div>
                                                     <p class="font-bold text-2xl">{{ user.name }}</p>
                                                     <p v-if="isApplicationSent(user.id)">申請済み</p>

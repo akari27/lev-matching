@@ -43,14 +43,6 @@ onMounted(()=>{
 
 <template>
     <section>
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">プロフィール情報</h2>
-
-            <p class="mt-1 text-sm text-gray-600">
-                アカウントのプロフィール情報とメールアドレスを更新します。
-            </p>
-        </header>
-
         <form @submit.prevent="form.post(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
                 <InputLabel for="name" value="名前 ※必須" />

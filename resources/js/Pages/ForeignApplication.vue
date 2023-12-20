@@ -35,10 +35,10 @@ function reject(id){
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pt-8 pb-8">
                     
-                    <p class="text-center font-bold text-3xl pb-8">申請リスト</p>
+                    <p class="text-center font-bold text-3xl">申請リスト</p>
                     
-                    <p class="text-center font-bold text-2xl">〜申請済み〜</p>
-                    <p v-if="props.sendApplications.length==0">承認待ちの申請はありません。</p>
+                    <p class="text-center font-bold text-2xl pt-4">〜申請済み〜</p>
+                    <p v-if="props.sendApplications.length==0" class="text-center text-1xl">承認待ちの申請はありません。</p>
                     <div v-else v-for="send in props.sendApplications" :key="send.id">
                         <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                             <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">
@@ -71,7 +71,7 @@ function reject(id){
                         </div>
                     </div>
                     
-                    <p class="text-center font-bold text-2xl">〜届いた申請〜</p>
+                    <p class="text-center font-bold text-2xl pt-4">〜届いた申請〜</p>
                     <p v-if="props.recieveApplications.length==0" class="text-center text-1xl">申請はありません。</p>
                     <div v-else v-for="recieve in props.recieveApplications" :key="recieve.id">
                         <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
@@ -111,8 +111,8 @@ function reject(id){
                         </div>
                     </div>
                     
-                    <p class="text-center font-bold text-2xl">〜繋がった人〜</p>
-                    <p v-if="props.approvedApplications.length==0">繋がった人はいません。</p>
+                    <p class="text-center font-bold text-2xl pt-4">〜繋がった人〜</p>
+                    <p v-if="props.approvedApplications.length==0" class="text-center text-1xl">繋がった人はいません。</p>
                     <div v-else v-for="approved in props.approvedApplications" :key="approved.id">
                         <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                             <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">

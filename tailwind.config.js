@@ -12,7 +12,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                logo: ['Work Sans'],
+                body: ['M PLUS 1p'],
             },
         },
     },

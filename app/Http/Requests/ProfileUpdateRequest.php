@@ -19,10 +19,10 @@ class ProfileUpdateRequest extends FormRequest
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'gender_flag' => [''],
-            'age' => [''],
-            'comment'  => [''],
+            'age' => ['integer', 'min:18', 'max:150'],
+            'comment'  => ['max:30'],
             'image_url'  => [''],
-            'hobby_category_id'  => [''],
+            'hobby_category_id'  => ['integer'],
         ];
     }
 }

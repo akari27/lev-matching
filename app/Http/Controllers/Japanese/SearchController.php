@@ -67,32 +67,43 @@ class SearchController extends Controller
         $result->each(function ($r) use($user, $hobbycategory, $japanlocation, $country)
             {
                 $hobbyId = $r->hobby_category_id;
-                $registerLocationId = $r->foreign_visitor->register_location_id;
-                $stayLocationId = $r->foreign_visitor->stay_location_id;
-                
                 $hobbyName = $hobbycategory->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
-                $stayLocationName = $japanlocation->where('id', $stayLocationId)->first()->name;
-                
                 $r->hobby = $hobbyName;
-                $r->register_location = $registerLocationName;
-                $r->stay_location = $stayLocationName;
+                
+                if($r->foreign_visitor->register_location_id != null){
+                    $registerLocationId = $r->foreign_visitor->register_location_id;
+                    $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
+                    $r->register_location = $registerLocationName;
+                }
+                if($r->foreign_visitor->stay_location_id != null){
+                    $stayLocationId = $r->foreign_visitor->stay_location_id;
+                    $stayLocationName = $japanlocation->where('id', $stayLocationId)->first()->name;
+                    $r->stay_location = $stayLocationName;
+                }
+                
             });
             
         $a=$application->where('sender_id',Auth::id())->get();
     
         return Inertia::render('SearchIndex',[
             'users' => $result,
+            'countries' => $country->get(),
+            'hobbycategories' => $hobbycategory->get(),
             'applications' => $a,
         ]);
     }
-    public function apply(Request $request, User $user, Application $application)
+    public function apply(Request $request, User $user,Country $country, HobbyCategory $hobbycategory, Application $application)
     {
         $input["sender_id"]=Auth::id();
         $input["receiver_id"]=$request["selectedUser"];
         $input["permission_flag"]=0;
         $application->fill($input)->save();
-        return Redirect::route('search.index');
+        return Inertia::render('SearchIndex',[
+            'users' => $request["allUsers"],
+            'countries' => $country->get(),
+            'hobbycategories' => $hobbycategory->get(),
+            'applications' => $application->where('sender_id',Auth::id())->get(),
+        ]);
     }
 }
 

@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'is_japanese' => 'required|integer',
             'gender_flag' => 'required|integer',
-            'age' => 'required|integer|max:100',
+            'age' => 'required|integer|min:18|max:150',
             'hobby_category_id' => 'required|integer',
         ]);
 

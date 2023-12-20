@@ -40,25 +40,24 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Delete Account</h2>
-
             <p class="mt-1 text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-                your account, please download any data or information that you wish to retain.
+               一度アカウントを削除すると復元できません。
             </p>
         </header>
-
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        
+        <div class="text-center">
+            <DangerButton @click="confirmUserDeletion">アカウント削除</DangerButton>
+        </div>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure you want to delete your account?
+                    本当にアカウントを削除しますか？
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                    enter your password to confirm you would like to permanently delete your account.
+                    一度アカウントを削除すると永久に復元できません。
+                    アカウント削除を希望する場合はパスワードを入力してください。
                 </p>
 
                 <div class="mt-6">
@@ -78,7 +77,7 @@ const closeModal = () => {
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                    <SecondaryButton @click="closeModal"> キャンセル </SecondaryButton>
 
                     <DangerButton
                         class="ml-3"
@@ -86,7 +85,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Delete Account
+                        アカウント削除
                     </DangerButton>
                 </div>
             </div>

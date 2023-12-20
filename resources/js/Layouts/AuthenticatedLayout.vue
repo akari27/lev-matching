@@ -12,23 +12,28 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen">
+            <nav>
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto border-b border-[#006f89] px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('mypage')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <div class="flex items-center">
+                                        <ApplicationLogo
+                                            class="block h-12 w-auto fill-current text-gray-800"
+                                        />
+                                        <span class="text-2xl text-[#006f89] font-logo font-bold ml-2">Travel Matching</span>
+                                    </div>
                                 </Link>
                             </div>
+                        </div>
 
+                        <div class="hidden lg:flex lg:items-center lg:ml-6">
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden lg:-my-px lg:ml-10 lg:flex">
                                 <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage')">
                                     マイページ
                                 </NavLink>
@@ -36,8 +41,8 @@ const showingNavigationDropdown = ref(false);
                                     Mypage
                                 </NavLink>
                             </div>
-                            
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index')">
                                     検索
                                 </NavLink>
@@ -46,16 +51,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('list.index')" :active="route().current('list.index')">
-                                    一覧
-                                </NavLink>
-                                <NavLink v-else :href="route('foreign.list.index')" :active="route().current('foreign.list.index')">
-                                    List
-                                </NavLink>
-                            </div>
-                            
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('application.index')" :active="route().current('application.index')">
                                     申請リスト
                                 </NavLink>
@@ -63,17 +59,24 @@ const showingNavigationDropdown = ref(false);
                                     ApplicationsList
                                 </NavLink>
                             </div>
-                        </div>
+                            
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.show')" :active="route().current('chat.show')">
+                                    チャット
+                                </NavLink>
+                                <NavLink v-else :href="route('chat.show')" :active="route().current('chat.show')">
+                                    Chat
+                                </NavLink>
+                            </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
-                                        <span class="inline-flex rounded-md">
+                                        <span class="inline-flex rounded-lg">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-100 bg-[#006f89] hover:bg-[#6ba3b0ff] focus:outline-none focus:bg-[#6ba3b0ff] transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
 
@@ -94,9 +97,9 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
+                                        <!--<DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>-->
                                         <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                            ログアウト
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -104,12 +107,12 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
+                        <div class="-mr-2 flex items-center lg:hidden">
                             <button
                                 @click="showingNavigationDropdown = !showingNavigationDropdown"
-                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                                class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:bg-[#f8f9f9ff] transition duration-150 ease-in-out"
                             >
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <svg class="h-6 w-6" stroke="#006f89" fill="none" viewBox="0 0 24 24">
                                     <path
                                         :class="{
                                             hidden: showingNavigationDropdown,
@@ -139,29 +142,36 @@ const showingNavigationDropdown = ref(false);
                 <!-- Responsive Navigation Menu -->
                 <div
                     :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
-                    class="sm:hidden"
+                    class="lg:hidden bg-[#fffcf7ff] py-2 mt-2"
                 >
-                    <div class="pt-2 pb-3 space-y-1">
+                    <div class="py-2 space-y-1">
                         <ResponsiveNavLink :href="route('mypage')" :active="route().current('mypage')">
                             マイページ
                         </ResponsiveNavLink>
                     </div>
+                    <div class="py-2 space-y-1">
+                        <ResponsiveNavLink :href="route('search.index')" :active="route().current('search.index')">
+                            検索
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="py-2 space-y-1">
+                        <ResponsiveNavLink :href="route('application.index')" :active="route().current('application.index')">
+                            申請リスト
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="py-2 space-y-1">
+                        <ResponsiveNavLink :href="route('chat.show')" :active="route().current('chat.show')">
+                            チャット
+                        </ResponsiveNavLink>
+                    </div>
+                    
+                    <div class="pt-2 mb-2 mx-auto border-b w-11/12 border-[#55828c] space-y-1" />
 
                     <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
-                            <div class="font-medium text-base text-gray-800">
-                                {{ $page.props.auth.user.name }}
-                            </div>
-                            <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
+                    <div class="py-2 space-y-1">
+                        <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+                            ログアウト
+                        </ResponsiveNavLink>
                     </div>
                 </div>
             </nav>
