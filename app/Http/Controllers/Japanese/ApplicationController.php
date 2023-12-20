@@ -23,16 +23,20 @@ class ApplicationController extends Controller
                 $s=$user->with('foreign_visitor')->where('id',$send->receiver_id)->first();
                 
                 $hobbyId = $s->hobby_category_id;
-                $registerLocationId = $s->foreign_visitor->register_location_id;
-                $stayLocationId = $s->foreign_visitor->stay_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
-                $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
-                
                 $send->hobby = $hobbyName;
-                $send->register_location = $registerLocationName;
-                $send->stay_location = $stayLocationName;
+                
+                if($s->foreign_visitor->register_location_id != null){
+                    $registerLocationId = $s->foreign_visitor->register_location_id;
+                    $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
+                    $send->register_location = $registerLocationName;
+                }
+                if($s->foreign_visitor->stay_location_id != null){
+                    $stayLocationId = $s->foreign_visitor->stay_location_id;
+                    $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
+                    $send->stay_location = $stayLocationName;
+                }
+                
                 $send->add_info = $s;
             });
             
@@ -42,16 +46,20 @@ class ApplicationController extends Controller
                 $r=$user->with('foreign_visitor')->where('id',$recieve->sender_id)->first();
 
                 $hobbyId = $r->hobby_category_id;
-                $registerLocationId = $r->foreign_visitor->register_location_id;
-                $stayLocationId = $r->foreign_visitor->stay_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
-                $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
-                
                 $recieve->hobby = $hobbyName;
-                $recieve->register_location = $registerLocationName;
-                $recieve->stay_location = $stayLocationName;
+                
+                if($r->foreign_visitor->register_location_id != null){
+                    $registerLocationId = $r->foreign_visitor->register_location_id;
+                    $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
+                    $recieve->register_location = $registerLocationName;
+                }
+                if($r->foreign_visitor->stay_location_id != null){
+                    $stayLocationId = $r->foreign_visitor->stay_location_id;
+                    $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
+                    $recieve->stay_location = $stayLocationName;
+                }
+
                 $recieve->add_info = $r;
             });
 
@@ -70,16 +78,20 @@ class ApplicationController extends Controller
                 $a=$user->with('foreign_visitor')->where('id',$userId)->first();
 
                 $hobbyId = $a->hobby_category_id;
-                $registerLocationId = $a->foreign_visitor->register_location_id;
-                $stayLocationId = $a->foreign_visitor->stay_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
-                $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
-                
                 $approved->hobby = $hobbyName;
-                $approved->register_location = $registerLocationName;
-                $approved->stay_location = $stayLocationName;
+                
+                if($a->foreign_visitor->register_location_id != null){
+                    $registerLocationId = $a->foreign_visitor->register_location_id;
+                    $registerLocationName = $country->where('id', $registerLocationId)->first()->name;
+                    $approved->register_location = $registerLocationName;
+                }
+                if($a->foreign_visitor->stay_location_id != null){
+                    $stayLocationId = $a->foreign_visitor->stay_location_id;
+                    $stayLocationName = $japan_location->where('id', $stayLocationId)->first()->name;
+                    $approved->stay_location = $stayLocationName;
+                }
+                
                 $approved->add_info = $a;
             });
         

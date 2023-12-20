@@ -3,13 +3,12 @@
 use App\Http\Controllers\Japanese\ProfileController;
 use App\Http\Controllers\Japanese\MypageController;
 use App\Http\Controllers\Japanese\SearchController;
-use App\Http\Controllers\Japanese\UserListController;
 use App\Http\Controllers\Japanese\ApplicationController;
+use App\Http\Controllers\Japanese\ChatController;
 
 use App\Http\Controllers\Foreign\ForeignProfileController;
 use App\Http\Controllers\Foreign\ForeignMypageController;
 use App\Http\Controllers\Foreign\ForeignSearchController;
-use App\Http\Controllers\Foreign\ForeignUserListController;
 use App\Http\Controllers\Foreign\ForeignApplicationController;
 
 use Inertia\Inertia;
@@ -41,14 +40,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'show'])->name('mypage');
     Route::get('/search', [SearchController::class, 'index'])->name('search.index');
     Route::post('/search', [SearchController::class, 'search'])->name('search.search');
+    Route::get('/search/apply', [SearchController::class, 'index'])->name('search.apply.index');
     Route::post('/search/apply', [SearchController::class, 'apply'])->name('search.apply');
-    Route::get('/list', [UserListController::class, 'index'])->name('list.index');
-    Route::post('/list', [UserListController::class, 'apply'])->name('list.apply');
     Route::get('/application', [ApplicationController::class, 'index'])->name('application.index');
-    // Route::post('/application', [ApplicationController::class, 'permission'])->name('application.permission');
-    // Route::post('/application', [ApplicationController::class, 'reject'])->name('application.reject');
     Route::post('/application/permission', [ApplicationController::class, 'permission'])->name('application.permission');
     Route::post('/application/reject', [ApplicationController::class, 'permission'])->name('application.permission');
+    Route::get('/chat', [ChatController::class, 'show'])->name('chat.show');
 
     Route::get('/foreign/profile', [ForeignProfileController::class, 'edit'])->name('foreign.profile.edit');
     Route::post('/foreign/profile', [ForeignProfileController::class, 'update'])->name('foreign.profile.update');
@@ -57,8 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/foreign/search', [ForeignSearchController::class, 'index'])->name('foreign.search.index');
     Route::post('/foreign/search', [ForeignSearchController::class, 'search'])->name('foreign.search.search');
     Route::post('/foreign/search/apply', [ForeignSearchController::class, 'apply'])->name('foreign.search.apply');
-    Route::get('/foreign/list', [ForeignUserListController::class, 'index'])->name('foreign.list.index');
-    Route::post('/foreign/list', [ForeignUserListController::class, 'apply'])->name('foreign.list.apply');
     Route::get('/foreign/application', [ForeignApplicationController::class, 'index'])->name('foreign.application.index');
     Route::post('/foreign/application/permission', [ForeignApplicationController::class, 'permission'])->name('foreign.application.permission');
     Route::post('/foreign/application/reject', [ForeignApplicationController::class, 'reject'])->name('foreign.application.reject');

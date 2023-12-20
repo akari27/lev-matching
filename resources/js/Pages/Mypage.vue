@@ -13,36 +13,52 @@ const user = usePage().props.auth.user;
 
 <template>
     <Head title="Mypage" />
-
-    <AuthenticatedLayout>
-        <!--<template #header>-->
-        <!--    <h2 class="font-semibold text-xl text-gray-800 leading-tight">Mypage</h2>-->
-        <!--</template>-->
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pt-8 pb-8">
-                    <p class="text-center font-bold text-3xl">マイページ</p>
-                    <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                        <div class="bg-slate-300 overflow-hidden shadow-md sm:rounded-lg pt-4 pb-4 mt-8 mb-8">
-                            <div class="flex">
-                                <div class="flex-1">
-                                    <div class="grid justify-items-center">
-                                        <div class="overflow-hidden rounded-full w-48 h-48">
-                                            <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'"  class="w-full h-full object-cover" />
-                                        </div>
-                                        <a :href="route('profile.edit')"><button>プロフィール編集</button></a>
+    <div class="bg-[#fff7eeff] px-8 py-4">
+        <AuthenticatedLayout>
+            <!--<template #header>-->
+            <!--    <h2 class="font-semibold text-xl text-gray-800 leading-tight">Mypage</h2>-->
+            <!--</template>-->
+            <div class="py-8">
+                <p class="text-center font-bold text-3xl text-[#006f89]">マイページ</p>
+                <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
+                    <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
+                        <div class="flex">
+                            <div class="flex items-center justify-center basis-1/3 bg-[#fdc562ff]">
+                                <div class="grid justify-items-center">
+                                    <div class="overflow-hidden rounded-full w-32 h-32">
+                                        <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'"  class="w-full h-full object-cover bg-white" />
                                     </div>
+                                    <a :href="route('profile.edit')" class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-28 mt-4"><button>編集する</button></a>
                                 </div>
-                                <div class="flex-1">
-                                    <div class="grid justify-items-center">
-                                        <div class="text-base/7">
-                                            <p class="font-bold text-2xl">{{ user.name }}</p>
-                                            <div class="text-xl">
-                                                <p>日本 {{ user.age }}歳 {{ user.gender_flag == 0 ? '男性' : '女性' }}</p>
-                                                <p>居住地 : {{ props.user_data.register_location }}</p>
-                                                <p>よく行く : {{ props.user_data.often_go_location }}</p>
-                                                <p>趣味 : {{ props.user_data.hobby_category }}</p>
-                                                <p>ヒトコト : {{ user.comment }}</p>
+                            </div>
+                            <div class="flex basis-2/3 p-8">
+                                <div class="grid justify-items-center">
+                                    <div class="text-base/7 text-[#004758]">
+                                        <span class="font-bold text-2xl">{{ user.name }}</span>
+                                        <span class="text-lg ml-2">
+                                            日本
+                                            {{ user.age }}歳
+                                            {{ user.gender_flag == 0 ? '男性' : '女性' }}
+                                        </span>
+                                        <div class="text-lg">
+                                            <div class="mt-4">
+                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
+                                                <span class="font-bold text-xl pl-4">{{ props.user_data.register_location }}</span>
+                                            </div>
+                                            
+                                            <div class="mt-2">
+                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く</span>
+                                                <span class="font-bold text-xl pl-4">{{ props.user_data.often_go_location }}</span>
+                                            </div>
+                                            
+                                            <div class="mt-2">
+                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
+                                                <span class="font-bold text-xl pl-4">{{ props.user_data.hobby_category }}</span>
+                                            </div>
+                                            
+                                            <div class="mt-2">
+                                                <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
+                                                <p class="font-bold text-xl pl-4">{{ user.comment }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -52,6 +68,6 @@ const user = usePage().props.auth.user;
                     </div>
                 </div>
             </div>
-        </div>
-    </AuthenticatedLayout>
+        </AuthenticatedLayout>
+    </div>
 </template>
