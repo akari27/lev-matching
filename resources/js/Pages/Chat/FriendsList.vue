@@ -19,7 +19,6 @@ const user = usePage().props.auth.user;
             <div class="py-8">
                 <p class="text-center font-bold text-3xl text-[#006f89]">チャット</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                    
                     <div>
                         <p class="text-center font-bold text-2xl pt-8 text-[#006f89]">〜繋がったユーザ〜</p>
                         <div v-if="props.approvedApplications.length!=0">
@@ -58,7 +57,6 @@ const user = usePage().props.auth.user;
                             <p class="text-center font-bold text-xl pt-4 text-[#e35748]">繋がったユーザはいません。マッチング相手を探そう！。</p>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </AuthenticatedLayout>
