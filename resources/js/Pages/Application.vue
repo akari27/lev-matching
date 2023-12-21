@@ -34,7 +34,7 @@ function reject(id){
             <div class="py-8">
                 <p class="text-center font-bold text-3xl text-[#006f89]">申請リスト</p>
                 <p class="text-center font-bold text-2xl pt-4 text-[#006f89]">〜申請済み〜</p>
-                <p v-if="props.sendApplications.length==0" class="text-center text-1xl pt-4 text-[#e35748]">承認待ちの申請はありません。</p>
+                <p v-if="props.sendApplications.length==0" class="text-center font-bold text-1xl pt-4 text-[#e35748]">承認待ちの申請はありません。</p>
                 <div v-else v-for="send in props.sendApplications" :key="send.id">
                     <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                         <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
@@ -90,7 +90,7 @@ function reject(id){
                 </div>
                 
                 <p class="text-center font-bold text-2xl pt-4 text-[#006f89]">〜届いた申請〜</p>
-                <p v-if="props.recieveApplications.length==0" class="text-center text-1xl pt-4 text-[#e35748]">申請はありません。</p>
+                <p v-if="props.recieveApplications.length==0" class="text-center font-bold text-1xl pt-4 text-[#e35748]">申請はありません。</p>
                 <div v-else v-for="recieve in props.recieveApplications" :key="recieve.id">
                     <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                         <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
@@ -155,7 +155,7 @@ function reject(id){
                     </div>
                 </div>
                 <p class="text-center font-bold text-2xl pt-4 text-[#006f89]">〜繋がった人〜</p>
-                <p v-if="props.approvedApplications.length==0" class="text-center text-1xl pt-4 text-[#e35748]">繋がった人はいません。</p>
+                <p v-if="props.approvedApplications.length==0" class="text-center font-bold text-1xl pt-4 text-[#e35748]">繋がった人はいません。</p>
                 <div v-else v-for="approved in props.approvedApplications" :key="approved.id">
                     <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                         <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
