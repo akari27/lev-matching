@@ -129,14 +129,14 @@ function isApplicationSent(id) {
                     
                     <!--検索結果の表示-->
                     <div v-for="user in props.users" :key="user.id">
-                        <form @submit.prevent="apply(user.id)" >
+                        <form @submit.prevent="apply(user.id)">
                             <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                                 <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
                                     <div class="flex">
                                         <div class="flex items-center justify-center basis-1/3 bg-[#fdc562ff]">
                                             <div class="grid justify-items-center">
                                                 <div class="overflow-hidden rounded-full w-32 h-32">
-                                                    <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" class="bg-white" />
+                                                    <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" class="w-full h-full object-cover bg-white" />
                                                 </div>
                                                 <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
                                                     <p v-if="isApplicationSent(user.id)">申請済み</p>
@@ -162,17 +162,17 @@ function isApplicationSent(id) {
                                                             <p class="w-4/5 ml-2">{{ user.register_location }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-4 flex">
+                                                        <div class="mt-2 flex">
                                                             <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
                                                             <p class="w-4/5 ml-2">{{ user.often_go_location }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-4 flex">
+                                                        <div class="mt-2 flex">
                                                             <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
                                                             <p class="w-4/5 ml-2">{{ user.hobby }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-4 flex">
+                                                        <div class="mt-2 flex">
                                                             <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
                                                             <p class="w-4/5 ml-2">{{ user.comment }}</p>
                                                         </div>

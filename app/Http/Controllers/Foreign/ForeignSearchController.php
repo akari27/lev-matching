@@ -60,20 +60,23 @@ class ForeignSearchController extends Controller
         }
         
         $result = $query->get();
-        
+
         $result->each(function ($r) use($user, $hobbycategory, $japanlocation)
             {
                 $hobbyId = $r->hobby_category_id;
-                $registerLocationId = $r->japanese->register_location_id;
-                $oftenGoLocationId = $r->japanese->often_go_location_id;
-                
                 $hobbyName = $hobbycategory->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $japanlocation->where('id', $registerLocationId)->first()->name;
-                $oftenGoLocationName = $japanlocation->where('id', $oftenGoLocationId)->first()->name;
-                
                 $r->hobby = $hobbyName;
-                $r->register_location = $registerLocationName;
-                $r->often_go_location = $oftenGoLocationName;
+                
+                if($r->japanese->register_location_id != null){
+                    $registerLocationId = $r->japanese->register_location_id;
+                    $registerLocationName = $japanlocation->where('id', $registerLocationId)->first()->name;
+                    $r->register_location = $registerLocationName;
+                }
+                if($r->japanese->often_go_location_id != null){
+                    $oftenGoLocationId = $r->japanese->often_go_location_id;
+                    $oftenGoLocationName = $japanlocation->where('id', $oftenGoLocationId)->first()->name;
+                    $r->often_go_location = $oftenGoLocationName;
+                }
             });
             
         $a=$application->where('sender_id',Auth::id())->get();
