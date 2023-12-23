@@ -37,6 +37,7 @@ function reject(id){
                 <p v-if="props.sendApplications.length==0" class="text-center text-1xl pt-4 text-[#e35748]">承認待ちの申請はありません。</p>
                 <div v-else v-for="send in props.sendApplications" :key="send.id">
                     <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
+                        
                         <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
                             <div class="flex">
                                 <div class="flex items-center justify-center basis-1/3 bg-[#fdc562ff]">
@@ -46,34 +47,36 @@ function reject(id){
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex basis-2/3 p-8">
-                                    <div class="grid justify-items-center">
-                                        <div class="text-base/7 text-[#004758]">
+                                <div class="flex basis-2/3 px-10 py-6">
+                                    <div class="text-[#004758] text-base/7 flex flex-col w-full">
+                                        <div class="p-2 border-b border-[#006f89]">
                                             <span class="font-bold text-2xl">{{ send.add_info.name }}</span>
                                             <span class="text-lg ml-2">
                                                 日本
                                                 {{ send.add_info.age }} 歳
                                                 {{ send.add_info.gender_flag == 0 ? '男性' : '女性'}}
                                             </span>
-                                            <div class="text-lg">
-                                                <div class="mt-4">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
-                                                    <span class="font-bold text-xl pl-4">{{ send.register_location }}</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-base mx-2 w-full">
+                                                <div class="mt-4 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
+                                                    <p class="w-4/5 ml-2">{{ send.register_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く場所</span>
-                                                    <span class="font-bold text-xl pl-4">{{ send.often_go_location }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-4/5 ml-2">{{ send.often_go_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                    <span class="font-bold text-xl pl-4">{{ send.hobby }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                    <p class="w-4/5 ml-2">{{ send.hobby }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                    <p class="font-bold text-xl pl-4">{{ send.add_info.comment }}</p>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                    <p class="w-4/5 ml-2">{{ send.add_info.comment }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,24 +121,24 @@ function reject(id){
                                                 {{ recieve.add_info.gender_flag == 0 ? '男性' : '女性' }}
                                             </span>
                                             <div class="text-lg">
-                                                <div class="mt-4">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
-                                                    <span class="font-bold text-xl pl-4">{{ recieve.register_location }}</span>
+                                                <div class="mt-4 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.register_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く場所</span>
-                                                    <span class="font-bold text-xl pl-4">{{ recieve.often_go_location }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.often_go_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                    <span class="font-bold text-xl pl-4">{{ recieve.hobby }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.hobby }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                    <p class="font-bold text-xl pl-4">{{ recieve.add_info.comment }}</p>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.add_info.comment }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,24 +173,24 @@ function reject(id){
                                                 {{ approved.add_info.gender_flag == 0 ? '男性' : '女性'}}
                                             </span>
                                             <div class="text-lg">
-                                                <div class="mt-4">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
-                                                    <span class="font-bold text-xl pl-4">{{ approved.register_location }}</span>
+                                                <div class="mt-4 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.register_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く場所</span>
-                                                    <span class="font-bold text-xl pl-4">{{ approved.often_go_location }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.often_go_location }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                    <span class="font-bold text-xl pl-4">{{ approved.hobby }}</span>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.hobby }}</p>
                                                 </div>
                                                 
-                                                <div class="mt-2">
-                                                    <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                    <p class="font-bold text-xl pl-4">{{ approved.add_info.comment }}</p>
+                                                <div class="mt-2 flex">
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.add_info.comment }}</p>
                                                 </div>
                                             </div>
                                         </div>

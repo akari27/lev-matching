@@ -62,7 +62,7 @@ class ApplicationController extends Controller
 
                 $recieve->add_info = $r;
             });
-
+            
         $approvedApplications = $application->where(function($query) {
             $query->where('sender_id', Auth::id())
                   ->orWhere('receiver_id', Auth::id());

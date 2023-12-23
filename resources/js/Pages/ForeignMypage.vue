@@ -29,34 +29,36 @@ const user = usePage().props.auth.user;
                                 </div>
                             </div>
                             
-                            <div class="flex basis-2/3 p-8">
-                                <div class="grid justify-items-center">
-                                    <div class="text-base/7 text-[#004758]">
+                            <div class="flex basis-2/3 px-10 py-6">
+                                <div class="text-[#004758] text-base/7 flex flex-col w-full">
+                                   <div class="p-2 border-b border-[#006f89]">
                                         <span class="font-bold text-2xl">{{ user.name }}</span>
                                         <span class="text-lg ml-2">
                                             {{ user_data.register_location }}
                                             {{ user.age }}歳
                                             {{ user.gender_flag == 0 ? '男性' : '女性' }}
                                         </span>
-                                        <div class="text-lg">
-                                            <div class="mt-4">
-                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">滞在期間</span>
-                                                <span class="font-bold text-xl pl-4">{{ user_data.start_of_stay }} ~ {{ user_data.end_of_stay }}</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-base mx-2 w-full">
+                                            <div class="mt-4 flex">
+                                                <p class="w-1/5 font-bold text-[#6c8489]">滞在期間</p>
+                                                <p class="w-4/5 ml-2">{{ user_data.start_of_stay }} ~ {{ user_data.end_of_stay }}</p>
                                             </div>
                                             
-                                            <div class="mt-2">
-                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">訪問場所</span>
-                                                <span class="font-bold text-xl pl-4">{{ user_data.stay_location }}</span>
+                                            <div class="mt-2 flex">
+                                                <p class="w-1/5 font-bold text-[#6c8489]">訪問場所</p>
+                                                <p class="w-4/5 ml-2">{{ user_data.stay_location }}</p>
                                             </div>
                                             
-                                            <div class="mt-2">
-                                                <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                <span class="font-bold text-xl pl-4">{{ user_data.hobby_category }}</span>
+                                            <div class="mt-2 flex">
+                                                <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                <p class="w-4/5 ml-2">{{ user_data.hobby_category }}</p>
                                             </div>
                                             
-                                            <div class="mt-2">
-                                                <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                <p class="font-bold text-xl pl-4">{{ user.comment }}</p>
+                                            <div class="mt-2 flex">
+                                                <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                <p class="w-4/5 ml-2">{{ user.comment }}</p>
                                             </div>
                                         </div>
                                     </div>

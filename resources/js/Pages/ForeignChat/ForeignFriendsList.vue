@@ -54,7 +54,7 @@ const user = usePage().props.auth.user;
                             </div>
                         </div>
                         <div v-else>
-                            <p class="text-center font-bold text-xl pt-4 text-[#e35748]">繋がったユーザはいません。マッチング相手を探そう！。</p>
+                            <p class="text-center font-bold text-xl pt-4 text-[#e35748]">繋がったユーザはいません。マッチング相手を探そう！</p>
                         </div>
                     </div>
                 </div>
