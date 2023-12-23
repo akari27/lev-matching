@@ -135,7 +135,7 @@ function isApplicationSent(id) {
                     
                     <!--検索結果の表示-->
                     <div v-for="user in props.users" :key="user.id">
-                        <form @submit.prevent="apply(user.id)" >
+                        <form @submit.prevent="apply(user.id)">
                             <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                                 <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
                                     <div class="flex">

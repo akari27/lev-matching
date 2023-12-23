@@ -18,10 +18,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     
-    // japaneseとforeign分け
-    // public const JAPANESE_HOME = 'japanese/profile';
-    // public const FOREIGN_HOME = 'foreign/profile';
-    
     public const JAPANESE_HOME = '/profile';
     public const FOREIGN_HOME = '/foreign/profile';
 

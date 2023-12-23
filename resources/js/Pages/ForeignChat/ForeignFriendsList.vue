@@ -16,17 +16,17 @@ const user = usePage().props.auth.user;
     <Head title="Chat" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
-            <div class="py-8">
-                <p class="text-center font-bold text-3xl text-[#006f89]">チャット</p>
+            <div class="py-8 text-[#006f89]">
+                <p class="text-center font-bold text-3xl">チャット</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                     <div>
-                        <p class="text-center font-bold text-2xl pt-8 text-[#006f89]">〜繋がったユーザ〜</p>
                         <div v-if="props.approvedApplications.length!=0">
-                            <p class="text-center text-xl pt-4 text-[#006f89]">チャット相手を選択してください。</p>
+                            <p class="text-center font-bold text-2xl pt-8">〜繋がったユーザ〜</p>
+                            <p class="text-center text-base pt-4 pb-6 text-[#e35748]">チャット相手を選択してください。</p>
                             <div v-for="user in props.approvedApplications">
                                 <a :href="'/foreign/chat/' + user.add_info.id">
                                     <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                                        <div class="bg-white overflow-hidden shadow-md rounded-lg my-6">
+                                        <div class="bg-white overflow-hidden shadow-md rounded-lg mb-6">
                                             <div class="flex">
                                                 <div class="flex items-center justify-center basis-1/3 bg-[#fdc562ff]">
                                                     <div class="grid justify-items-center">

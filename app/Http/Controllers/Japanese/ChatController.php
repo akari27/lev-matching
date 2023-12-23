@@ -64,7 +64,7 @@ class ChatController extends Controller
         
         $messages->each(function ($m)
         {
-            $m->send_time = date('Y/m/d H:i', strtotime($m->created_at));
+            $m->send_time = date('m/d H:i', strtotime($m->created_at));
         });
         
         // dd($user);
