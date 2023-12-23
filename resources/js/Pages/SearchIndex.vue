@@ -65,7 +65,7 @@ function isApplicationSent(id) {
 </script>
 
 <template>
-    <Head title="Serch" />
+    <Head title="Search" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
@@ -82,16 +82,16 @@ function isApplicationSent(id) {
                                 <div class="mt-4">
                                     <label for="selectedGender" class="block text-[#00323e]">性別</label>
                                     <select v-model="form.selectedGender" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] outline-none w-48">
-                                        <option value="null">全て</option>
-                                        <option value=0>男性</option>
-                                        <option value=1>女性</option>
+                                        <option :value=null>全て</option>
+                                        <option :value=0>男性</option>
+                                        <option :value=1>女性</option>
                                     </select>
                                 </div>
                                 
                                 <div class="mt-4">
                                     <label for="selectedHobbyr" class="block text-[#00323e]">趣味</label>
                                     <select v-model="form.selectedHobby" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] focus:outline-none w-48">
-                                        <option :value="null">全て</option>
+                                        <option :value=null>全て</option>
                                         <option v-for="hobby_category in props.hobbycategories" :value= "hobby_category.id">{{ hobby_category.name }}</option>
                                     </select>
                                 </div>
@@ -99,7 +99,7 @@ function isApplicationSent(id) {
                                 <div class="mt-4">
                                     <label for="selectedRegisterLocation" class="block text-[#00323e]">出身国</label>
                                     <select v-model="form.selectedRegisterLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
-                                        <option :value="null">全て</option>
+                                        <option :value=null>全て</option>
                                         <option v-for="country in props.countries" :value= "country.id">{{ country.name }}</option>
                                     </select>
                                 </div>
@@ -107,7 +107,7 @@ function isApplicationSent(id) {
                                 <div class="mt-4">
                                     <label for="selectedStayLocation" class="block -[#00323e]">訪問場所</label>
                                     <select v-model="form.selectedStayLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
-                                        <option :value="null">全て</option>
+                                        <option :value=null>全て</option>
                                         <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
                                     </select>
                                 </div>
@@ -150,39 +150,37 @@ function isApplicationSent(id) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="flex basis-2/3 p-8">
-                                            <div class="grid justify-items-center">
-                                                <div class="text-base/7 text-[#004758]">
+                                        <div class="flex basis-2/3 px-10 py-6">
+                                            <div class="text-[#004758] text-base/7 flex flex-col w-full">
+                                                <div class="p-2 border-b border-[#006f89]">
                                                     <span class="font-bold text-2xl">{{ user.name }}</span>
                                                     <span class="text-lg ml-2">
                                                         {{ user.register_location }} 
                                                         {{ user.age }} 歳
                                                         {{ user.gender_flag == 0 ? '男性' : '女性'}}
                                                     </span>
-                                                    <div class="text-lg">
-                                                        <div class="mt-4">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">滞在期間</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.foreign_visitor.start_of_stay }} ~ {{ user.foreign_visitor.end_of_stay }}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="text-base mx-2 w-full">
+                                                        <div class="mt-4 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">滞在期間</p>
+                                                            <p class="w-4/5 ml-2">{{ user.foreign_visitor.start_of_stay }} ~ {{ user.foreign_visitor.end_of_stay }}</p>
                                                         </div>
-                                                        
-                                                        <div class="mt-2">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">訪問場所</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.stay_location }}</span>
+                                                        <div class="mt-2 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">訪問場所</p>
+                                                            <p class="w-4/5 ml-2">{{ user.stay_location }}</p>
                                                         </div>
-                                                        
-                                                        <div class="mt-2">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.hobby }}</span>
+                                                        <div class="mt-2 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                            <p class="w-4/5 ml-2">{{ user.hobby }}</p>
                                                         </div>
-                                                        
-                                                        <div class="mt-2">
-                                                            <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">訪日理由</p>
-                                                            <p class="font-bold text-xl pl-4">{{ user.foreign_visitor.reason }}</p>
+                                                        <div class="mt-2 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">訪日理由</p>
+                                                            <p class="w-4/5 ml-2">{{ user.foreign_visitor.reason }}</p>
                                                         </div>
-                                                        
-                                                        <div class="mt-2">
-                                                            <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                            <p class="font-bold text-xl pl-4">{{ user.comment }}</p>
+                                                        <div class="mt-2 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                            <p class="w-4/5 ml-2">{{ user.comment }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,6 +188,7 @@ function isApplicationSent(id) {
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>

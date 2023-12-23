@@ -71,9 +71,9 @@ function isApplicationSent(id) {
                                 <div class="mt-4">
                                     <label for="selectedGender" class="block text-[#00323e]">性別</label>
                                     <select v-model="form.selectedGender" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] outline-none w-48">
-                                        <option value="null">全て</option>
-                                        <option value=0>男性</option>
-                                        <option value=1>女性</option>
+                                        <option :value="null">全て</option>
+                                        <option :value=0>男性</option>
+                                        <option :value=1>女性</option>
                                     </select>
                                 </div>
                                 
@@ -145,35 +145,36 @@ function isApplicationSent(id) {
                                             </div>
                                         </div>
                                         
-                                        
-                                        <div class="flex basis-2/3 p-8">
-                                            <div class="grid justify-items-center">
-                                                <div class="text-base/7 text-[#004758]">
+                                        <div class="flex basis-2/3 px-10 py-6">
+                                            <div class="text-[#004758] text-base/7 flex flex-col w-full">
+                                                <div class="p-2 border-b border-[#006f89]">
                                                     <span class="font-bold text-2xl">{{ user.name }}</span>
                                                     <span class="text-lg ml-2">
                                                         日本
                                                         {{ user.age }} 歳
                                                         {{ user.gender_flag == 0 ? '男性' : '女性'}}
                                                     </span>
-                                                    <div class="text-lg">
-                                                        <div class="mt-4">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">居住地</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.register_location }}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="text-base mx-2 w-full">
+                                                        <div class="mt-4 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
+                                                            <p class="w-4/5 ml-2">{{ user.register_location }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-2">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">よく行く場所</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.often_go_location }}</span>
+                                                        <div class="mt-4 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                            <p class="w-4/5 ml-2">{{ user.often_go_location }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-2">
-                                                            <span class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">趣味</span>
-                                                            <span class="font-bold text-xl pl-4">{{ user.hobby }}</span>
+                                                        <div class="mt-4 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
+                                                            <p class="w-4/5 ml-2">{{ user.hobby }}</p>
                                                         </div>
                                                         
-                                                        <div class="mt-2">
-                                                            <p class="text-center rounded-lg bg-[#ede4dfff] inline-block w-18">ヒトコト</p>
-                                                            <p class="font-bold text-xl pl-4">{{ user.comment }}</p>
+                                                        <div class="mt-4 flex">
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
+                                                            <p class="w-4/5 ml-2">{{ user.comment }}</p>
                                                         </div>
                                                     </div>
                                                 </div>

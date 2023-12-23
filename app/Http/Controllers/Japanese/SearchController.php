@@ -25,6 +25,7 @@ class SearchController extends Controller
         return Inertia::render('SearchIndex',[
             'countries' => $country->get(),
             'hobbycategories' => $hobbycategory->get(),
+            'japanlocations' => $japanlocation->get(),
         ]);
     }
     

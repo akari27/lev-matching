@@ -80,7 +80,7 @@ function send(){
                         
                     </div>
                     
-                    <a :href="route('chat.index')">≪ ユーザ一覧に戻る</a>
+                    <a :href="route('chat.index')" class="text-[#006f89]">≪ ユーザ一覧に戻る</a>
                 </div>
             </div> 
         </AuthenticatedLayout>
