@@ -17,28 +17,14 @@ class JapanRegionSeeder extends Seeder
     public function run()
     {
         DB::table('japan_regions')->insert([
-                'name' => '北海道',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '東北',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '関東',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '中部',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '近畿',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '中国',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '四国',
-        ]);
-        DB::table('japan_regions')->insert([
-                'name' => '九州',
+            ['name' => '北海道地方'],
+            ['name' => '東北地方'],
+            ['name' => '関東地方'],
+            ['name' => '中部地方'],
+            ['name' => '近畿地方'],
+            ['name' => '中国地方'],
+            ['name' => '四国地方'],
+            ['name' => '九州地方'],
         ]);
     }
 }

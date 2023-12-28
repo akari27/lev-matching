@@ -17,22 +17,13 @@ class HobbyCategorySeeder extends Seeder
     public function run()
     {
         DB::table('hobby_categories')->insert([
-                'name' => '音楽',
-        ]);
-        DB::table('hobby_categories')->insert([
-                'name' => 'スポーツ',
-        ]);
-        DB::table('hobby_categories')->insert([
-                'name' => '料理',
-        ]);
-        DB::table('hobby_categories')->insert([
-                'name' => '芸術',
-        ]);
-        DB::table('hobby_categories')->insert([
-                'name' => 'ゲーム',
-        ]);
-        DB::table('hobby_categories')->insert([
-                'name' => 'アニメ・漫画',
+                ['name' => 'スポーツ'],
+                ['name' => 'アウトドア'],
+                ['name' => '料理・グルメ'],
+                ['name' => '美容'],
+                ['name' => '芸術'],
+                ['name' => '音楽'],
+                ['name' => 'アニメ・ゲーム'],
         ]);
     }
 }
