@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { ref, computed } from 'vue';
+import { onUpdated, ref, computed } from 'vue';
 
 const props = defineProps({
     users: Array,
@@ -13,6 +13,10 @@ const props = defineProps({
 
 const user = usePage().props.auth.user;
 
+onUpdated(()=>{
+    console.log(form.allUsers)
+})
+
 const form = useForm({
     name: user.name,
     selectedGender: null,
@@ -20,7 +24,10 @@ const form = useForm({
     selectedRegisterLocation: null,
     selectedOftenGoLocation: null,
     selectedUser: null,
+    allUsers: null,
 });
+
+form.allUsers = computed(()=>props.users)
 
 function isAllOptions() {
     return (
@@ -40,11 +47,12 @@ function check() {
     }
 }
 
-// 下記UserListと全く同じ関数、全く同じコードこっちにかいてもいい？
 function apply(id){
     form.selectedUser=id
     console.log(form.selectedUser)
-    form.post(route('foreign.search.apply'))
+    form.post(route('foreign.search.apply'),{
+        preserveScroll: true,
+    })
 }
 
 function isApplicationSent(id) {
