@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ForeignSearchController extends Controller
 {
-    public function index(
-        JapanLocation $japanlocation, 
-        HobbyCategory $hobbycategory,
-        )
+    public function index(JapanLocation $japanlocation, HobbyCategory $hobbycategory)
     {
         return Inertia::render('ForeignSearchIndex',[
             'japanlocations' => $japanlocation->get(),
@@ -86,12 +83,17 @@ class ForeignSearchController extends Controller
             'applications' => $a,
         ]);
     }
-    public function apply(Request $request, User $user, Application $application)
+    public function apply(Request $request, User $user, Application $application, JapanLocation $japanlocation, HobbyCategory $hobbycategory)
     {
         $input["sender_id"]=Auth::id();
         $input["receiver_id"]=$request["selectedUser"];
         $input["permission_flag"]=0;
         $application->fill($input)->save();
-        return Redirect::route('foreign.search.index');
+        return Inertia::render('ForeignSearchIndex',[
+            'users' => $request["allUsers"],
+            'japanlocations' => $japanlocation->get(),
+            'hobbycategories' => $hobbycategory->get(),
+            'applications' => $application->where('sender_id',Auth::id())->get(),
+        ]);
     }
 }

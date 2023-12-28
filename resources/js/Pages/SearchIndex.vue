@@ -14,7 +14,6 @@ const props = defineProps({
 
 const user = usePage().props.auth.user;
 
-
 onUpdated(()=>{
     console.log(form.allUsers)
 })
@@ -48,7 +47,6 @@ function check() {
     }
 }
 
-// 下記UserListと全く同じ関数、全く同じコードこっちにかいてもいい？
 function apply(id){
     form.selectedUser=id
     console.log(form.selectedUser)
@@ -58,8 +56,6 @@ function apply(id){
 }
 
 function isApplicationSent(id) {
-    // props.applicationの配列の中にreceiver_idが同一idのものがあるか？(=申請済みかどうか？)
-    // someメソッドは配列内の各要素(app)に対し、receiver_idとid(引数)と等しいものがあるかチェックするメソッド。等しいものがあったらTrueを返す。
     return props.applications.some(app => app.receiver_id == id);
 }
 </script>
@@ -150,6 +146,7 @@ function isApplicationSent(id) {
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="flex basis-2/3 px-10 py-6">
                                             <div class="text-[#004758] text-base/7 flex flex-col w-full">
                                                 <div class="p-2 border-b border-[#006f89]">
