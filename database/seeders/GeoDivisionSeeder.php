@@ -16,10 +16,7 @@ class GeoDivisionSeeder extends Seeder
     public function run()
     {
         DB::table('geo_divisions')->insert([
-                'name' => 'アジア',
-        ]);
-        DB::table('geo_divisions')->insert([
-                'name' => 'ヨーロッパ',
+            'name' => 'アジア',
         ]);
     }
 }

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             HobbyCategorySeeder::class,
             JapaneseSeeder::class,
             ForeignVisitorSeeder::class,
+            ApplicationSeeder::class,
+            ChatSeeder::class,
         ]);
     }
 }
