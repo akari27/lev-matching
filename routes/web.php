@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/search/apply', [SearchController::class, 'apply'])->name('search.apply');
     Route::get('/application', [ApplicationController::class, 'index'])->name('application.index');
     Route::post('/application/permission', [ApplicationController::class, 'permission'])->name('application.permission');
-    Route::post('/application/reject', [ApplicationController::class, 'permission'])->name('application.permission');
+    Route::post('/application/reject', [ApplicationController::class, 'reject'])->name('application.reject');
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/{user}', [ChatController::class, 'show'])->name('chat.show');
     Route::post('/chat/{user}', [ChatController::class, 'send'])->name('chat.send');
