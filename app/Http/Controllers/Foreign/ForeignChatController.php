@@ -64,7 +64,7 @@ class ForeignChatController extends Controller
         
         $messages->each(function ($m)
         {
-            $m->send_time = date('Y/m/d H:i', strtotime($m->created_at));
+            $m->send_time = date('m/d H:i', strtotime($m->created_at));
         });
         
         return Inertia::render('ForeignChat/ForeignMessage',[
