@@ -39,11 +39,9 @@ const closeModal = () => {
 
 <template>
     <section class="space-y-6">
-        <header>
-            <p class="mt-1 text-sm text-gray-600">
-               一度アカウントを削除すると復元できません。
-            </p>
-        </header>
+        <p class="mt-6 text-sm text-gray-600">
+           一度アカウントを削除すると復元できません。
+        </p>
         
         <div class="text-center">
             <DangerButton @click="confirmUserDeletion">アカウント削除</DangerButton>

@@ -130,7 +130,7 @@ const submit = () => {
             </div>
             
             <div class="mt-4">
-                <InputLabel for="age" value="Age" />
+                <InputLabel for="age" value="Age ※ Only adults over 20 can register." />
                 <TextInput
                     id="age"
                     type="text"
@@ -139,7 +139,6 @@ const submit = () => {
                     required
                     autocomplete="age"
                 />
-                <span class="text-sm text-gray-700"> ※ Only adults over 20 can register.</span>
                 <InputError class="mt-2" :message="form.errors.age" />
             </div>
             

@@ -104,7 +104,7 @@ function image_save($event){
                 <select
                     id="gender_flag"
                     type="gender_flag"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.gender_flag"
                     required
                     autocomplete="username"
@@ -120,7 +120,7 @@ function image_save($event){
 
                 <TextInput
                     id="age"
-                    type="age"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.age"
                     required
@@ -131,8 +131,8 @@ function image_save($event){
             </div>
             
             <div>
-                <p>日本人か外国人か ※変更不可</p>
-                <p>{{ form.is_japanese == 1 ? '日本人' : '外国人' }}</p>
+                <p class="text-sm text-gray-700">日本人か外国人か ※変更不可</p>
+                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? '日本人' : '外国人' }}</p>
             </div>
             
             <div>
@@ -141,7 +141,7 @@ function image_save($event){
                 <select
                     id="hobby_category_id"
                     type="hobby_category_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.hobby_category_id"
                     required
                     autocomplete="username"
@@ -151,16 +151,15 @@ function image_save($event){
                 <InputError class="mt-2" :message="form.errors.hobby_category_id" />
             </div>
             
-            <!--外国人に表示する項目-->
+        <!--外国人に表示する項目-->
             <div>
                 <InputLabel for="register_location_id" value="RegisterLocation" />
 
                 <select
                     id="register_location_id"
                     type="register_location_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.register_location_id"
-                    required
                     autocomplete="username"
                 >
                     <option v-for="country in props.countries" :value="country.id">{{ country.name }}</option>
@@ -175,9 +174,8 @@ function image_save($event){
                 <select
                     id="stay_location_id"
                     type="stay_location_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.stay_location_id"
-                    required
                     autocomplete="username"
                 >
                     <option v-for="japan_location in props.japan_locations" :value="japan_location.id">{{ japan_location.name }}</option>
@@ -192,7 +190,7 @@ function image_save($event){
                 <input
                     id="start_of_stay"
                     type="date"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.start_of_stay"
                     autocomplete="username"
                 >
@@ -206,7 +204,7 @@ function image_save($event){
                 <input
                     id="end_of_stay"
                     type="date"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.end_of_stay"
                     autocomplete="username"
                 />
@@ -218,7 +216,7 @@ function image_save($event){
                 <InputLabel for="reason" value="Reason" />
                 <TextInput
                     id="reason"
-                    type="reason"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.reason"
                     autocomplete="username"
@@ -230,7 +228,7 @@ function image_save($event){
                 <InputLabel for="comment" value="Comment" />
                 <TextInput
                     id="comment"
-                    type="comment"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.comment"
                     autocomplete="username"
@@ -250,7 +248,7 @@ function image_save($event){
                 <InputError class="mt-2" :message="form.errors.iamge_url" />
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="text-center">
                 <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
