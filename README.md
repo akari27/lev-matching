@@ -1,66 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<!--作成中！！コミットしないで！！-->
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Travel Matching 訪日外国人とのマッチングサービスアプリ
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 目次
+1.制作背景
+2.使用技術・ツール
+3.機能
+4.デモ
+5.データフロー
+6.課題点
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 制作背景
+最近コロナが落ち着いた・円安の影響で訪日外国人が増えているが、訪日外国人と日本人が交流する場所があまりないと感じたため作成しようと思った。
+旅行ついでに日本人と交流したい訪日外国人や、英語などの語学力を高めたい日本人にとって有用なアプリになると考える。
 
-## Laravel Sponsors
+## 使用技術・ツール
+AWS Cloud9
+Laravel9, Vue.js, HTML/CSS, Tailwind CSS, JavaScript, PHP, MySQL
+Cloudinary
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 機能
+・ログイン機能
+・マルチ認証
+・プロフィール編集機能
+・画像アップロード機能
+・検索機能
+・フォロー申請・承認機能
+・チャット機能
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## デモ
+アプリURL: https://lev-matching-398333f93750.herokuapp.com/login
+Github: https://github.com/akari27/lev-matching
 
-## Contributing
+テスト用アカウント
+日本人アカウント: ryokotaro@gmail.com test1234
+訪日外国人アカウント: kimsoyeon@gmail.com test1234
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## データフロー
+DB修正したらはる
 
-## Code of Conduct
+## 課題点
+検索機能 : 年代や訪日期間で検索をかけれるようにしたかったが時間が足りず実装できなかった。
+申請リスト : 「繋がった人」はマイページに表示した方が分かりやすそうなため、ワークフレームづくりの段階でそこを考慮すべきだった。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+また、時間の都合上実装できなかった機能が複数あったため、時間があったら特に下記の実装に取り組みたい。
+レコメンド機能 : 年代の近い人、趣味が同じ人をおすすめする
+チャット機能 : 現段階ではマッチング後に何のアクションも起こせず、マッチングした意味がない状態になってしまっているため、チャット機能をつけたい。
