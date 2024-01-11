@@ -100,7 +100,7 @@ const submit = () => {
 
                 <select 
                     id="is_japanese"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.is_japanese"
                     required
                     autocomplete="is_japanese"
@@ -117,7 +117,7 @@ const submit = () => {
 
                 <select 
                     id="gender_flag"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.gender_flag"
                     required
                     autocomplete="gender_flag"
@@ -131,7 +131,6 @@ const submit = () => {
             
             <div class="mt-4">
                 <InputLabel for="age" value="Age" />
-
                 <TextInput
                     id="age"
                     type="text"
@@ -140,7 +139,7 @@ const submit = () => {
                     required
                     autocomplete="age"
                 />
-
+                <span class="text-sm text-gray-700"> ※ Only adults over 20 can register.</span>
                 <InputError class="mt-2" :message="form.errors.age" />
             </div>
             
@@ -149,7 +148,7 @@ const submit = () => {
 
                 <select 
                     id="hobby_category_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.hobby_category_id"
                     required
                     autocomplete="hobby_category_id"
