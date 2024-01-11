@@ -24,7 +24,7 @@ defineProps({
                 <p class="text-center font-bold text-3xl pb-4 text-[#006f89]">プロフィール編集</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                     
-                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-6 mt-8 mb-8">
                         <div class="bg-[#006f89] overflow-hidden">
                             <p class="text-center font-bold text-2xl text-white mt-4 mb-4">基本情報</p>
                         </div>
@@ -40,7 +40,7 @@ defineProps({
                         </div>
                     </div>
     
-                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-6 mt-8 mb-8">
                         <div class="bg-[#006f89] overflow-hidden">
                             <p class="text-center font-bold text-2xl text-white mt-4 mb-4">パスワード更新</p>
                         </div>
@@ -49,9 +49,9 @@ defineProps({
                         </div>
                     </div>
     
-                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-4 mt-8 mb-8">
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-6 mt-8 mb-8">
                         <div class="bg-[#006f89] overflow-hidden">
-                            <p class="text-center font-bold text-2xl text-white mt-4 mb-4">アカウント削除</p>
+                            <p class="text-center font-bold text-2xl text-white mt-4 mb-4">退会</p>
                         </div>
                         <div class="flex justify-center">
                             <DeleteUserForm class="max-w-xl" />

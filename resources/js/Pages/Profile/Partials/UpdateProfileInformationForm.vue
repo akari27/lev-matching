@@ -101,7 +101,7 @@ onMounted(()=>{
                 <select
                     id="gender_flag"
                     type="gender_flag"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.gender_flag"
                     required
                     autocomplete="username"
@@ -117,7 +117,7 @@ onMounted(()=>{
 
                 <TextInput
                     id="age"
-                    type="age"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.age"
                     required
@@ -128,8 +128,8 @@ onMounted(()=>{
             </div>
             
             <div>
-                <p>日本人か外国人か ※変更不可</p>
-                <p>{{ form.is_japanese == 1 ? '日本人' : '訪日外国人' }}</p>
+                <p class="text-sm text-gray-700">日本人か外国人か ※変更不可</p>
+                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? '日本人' : '訪日外国人' }}</p>
             </div>
             
             <div>
@@ -138,7 +138,7 @@ onMounted(()=>{
                 <select
                     id="hobby_category_id"
                     type="hobby_category_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.hobby_category_id"
                     required
                     autocomplete="username"
@@ -155,9 +155,8 @@ onMounted(()=>{
                 <select
                     id="register_location_id"
                     type="register_location_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.register_location_id"
-                    required
                     autocomplete="username"
                 >
                     <option v-for="japanLocation in props.japanLocations" :value="japanLocation.id">{{ japanLocation.name }}</option>
@@ -172,9 +171,8 @@ onMounted(()=>{
                 <select
                     id="often_go_location_id"
                     type="often_go_location_id"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     v-model="form.often_go_location_id"
-                    required
                     autocomplete="username"
                 >
                     <option v-for="japanLocation in props.japanLocations" :value="japanLocation.id">{{ japanLocation.name }}</option>
@@ -186,7 +184,7 @@ onMounted(()=>{
                 <InputLabel for="comment" value="ヒトコト" />
                 <TextInput
                     id="comment"
-                    type="comment"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.comment"
                     autocomplete="username"
@@ -206,7 +204,7 @@ onMounted(()=>{
                 <InputError class="mt-2" :message="form.errors.iamge_url" />
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="text-center">
                 <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
