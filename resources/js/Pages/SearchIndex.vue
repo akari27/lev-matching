@@ -56,8 +56,14 @@ function apply(id){
 }
 
 function isApplicationSent(id) {
-    return props.applications.some(app => app.receiver_id == id);
+    // ここuser.id(自分のid)が合致してるかの確認いる？→コントローラーの時点でやってるので大丈夫
+    return props.applications.some(app => app.receiver_id == id && app.permission_flag == 0);
 }
+
+function isApplied(id) {
+    return props.applications.some(app => app.sender_id == id && app.permission_flag == 0);
+}
+
 </script>
 
 <template>
@@ -140,9 +146,10 @@ function isApplicationSent(id) {
                                                 <div class="overflow-hidden rounded-full w-32 h-32">
                                                     <img :src="user.image_url || 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1701254979/kkrn_icon_user_3_wjwtry.png'" class="bg-white" />
                                                 </div>
-                                                <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
-                                                    <p v-if="isApplicationSent(user.id)">申請済み</p>
-                                                    <input v-else type="submit" class="font-bold" value='申請'/>
+                                                <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] mt-4">
+                                                    <p v-if="isApplicationSent(user.id)" class="w-24">申請済み</p>
+                                                    <p v-else-if="isApplied(user.id)" class="w-40 text-lg font-bold">申請が届いています！</p>
+                                                    <input v-else type="submit" class="w-24 font-bold" value='申請'/>
                                                 </div>
                                             </div>
                                         </div>

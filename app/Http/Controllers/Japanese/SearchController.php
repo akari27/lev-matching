@@ -40,7 +40,21 @@ class SearchController extends Controller
         )
     {
         $result = [];
-        $query = $user->with('foreign_visitor')->where('id','!=',Auth::id())->where('is_japanese',0);
+        // $query = $user->with('foreign_visitor')->where('is_japanese',0);
+        $a = $application->where('sender_id',Auth::id())->where('permission_flag',1);
+        $b = $application->where('receiver_id',Auth::id())->where('permission_flag',1);
+        
+        $receiver_ids = $a->pluck('receiver_id');
+        $sender_ids = $b->pluck('sender_id');
+        
+        $query = $user->with('foreign_visitor')
+                      ->where('is_japanese', 0)
+                      ->whereNotIn('id', $receiver_ids)
+                      ->whereNotIn('id', $sender_ids);
+
+
+        // applicationテーブルの'sender_id'か'receiver_id'がAuth::id()かつ'permission_flag' => '1'のユーザは表示しない
+        // $application->where('sender_id',Auth::id())->where('permission_flag',1);
         
         if ($request->filled('selectedGender')) {
             $query->where('gender_flag', $request->selectedGender);
@@ -83,14 +97,12 @@ class SearchController extends Controller
                 }
                 
             });
-            
-        $a=$application->where('sender_id',Auth::id())->get();
     
         return Inertia::render('SearchIndex',[
             'users' => $result,
             'countries' => $country->get(),
             'hobbycategories' => $hobbycategory->get(),
-            'applications' => $a,
+            'applications' => $application->where('sender_id',Auth::id())->orWhere('receiver_id',Auth::id())->get(),
         ]);
     }
     public function apply(Request $request, User $user,Country $country, HobbyCategory $hobbycategory, Application $application)
@@ -103,7 +115,7 @@ class SearchController extends Controller
             'users' => $request["allUsers"],
             'countries' => $country->get(),
             'hobbycategories' => $hobbycategory->get(),
-            'applications' => $application->where('sender_id',Auth::id())->get(),
+            'applications' => $application->where('sender_id',Auth::id())->orWhere('receiver_id',Auth::id())->get(),
         ]);
     }
 }
