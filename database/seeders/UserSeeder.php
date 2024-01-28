@@ -133,7 +133,7 @@ class UserSeeder extends Seeder
                 'is_japanese' => '0',
                 'hobby_category_id' => '3',
                 'comment' => '日本の料理を楽しみたいです。八ツ橋を持ち帰りたい！',
-                'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1705548438/%E3%82%BF%E3%82%A4_geuzdk.png',
+                'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1706436919/%E3%82%BF%E3%82%A4_xckh9k.png',
             ],
             [
                 'name' => 'Kim Min-ji',
@@ -166,7 +166,7 @@ class UserSeeder extends Seeder
                 'is_japanese' => '0',
                 'hobby_category_id' => '7',
                 'comment' => '日本のアニメが好きです。秋葉原に寄ってみたい。',
-                'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1705548427/%E3%83%98%E3%82%99%E3%83%88%E3%83%8A%E3%83%A0_xsgqww.png',
+                'image_url' => 'https://res.cloudinary.com/ddsaj5dfs/image/upload/v1706436691/%E3%83%98%E3%82%99%E3%83%88%E3%83%8A%E3%83%A0_t1bzsp.png',
             ],
         ]);
     }
