@@ -13,7 +13,8 @@ use App\Models\Chat;
 use App\Models\JapanLocation;
 use Illuminate\Support\Facades\Redirect;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use App\Http\Requests\StoreMessageRequest;
 
 class ForeignChatController extends Controller
 {
@@ -73,7 +74,7 @@ class ForeignChatController extends Controller
         ]);
     }
     
-    public function send(Request $request,Chat $chat, User $user)
+    public function send(StoreMessageRequest $request,Chat $chat, User $user)
     {
         $input["sender_id"]=Auth::id();
         $input["receiver_id"]=$request["receiver_id"];
