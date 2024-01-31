@@ -109,7 +109,9 @@ function scrollToBottom() {
                             </div>
                         </form>
 
-                        
+                        <div>
+                            <p v-if="form.errors.sendMessage" class="text-center text-red-500">{{ form.errors.sendMessage }}</p>
+                        </div>
                         
                     </div>
                     
