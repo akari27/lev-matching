@@ -35,15 +35,22 @@ function image_save($event){
     console.log(form.image_url)
 }
 
-onMounted(()=>{
-    console.log(props.hobbyCategories);
-})
+// onMounted(()=>{
+//     console.log(props.hobbyCategories);
+// })
+
+const updateProfile = () => {
+    form.post(route('profile.update'), {
+        preserveScroll: true,
+    });
+};
 
 </script>
 
 <template>
     <section>
-        <form @submit.prevent="form.post(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
+        <!--<form @submit.prevent="form.post(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">-->
+        <form @submit.prevent="updateProfile" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
                 <InputLabel for="name" value="名前 ※必須" />
 
@@ -208,7 +215,7 @@ onMounted(()=>{
                 <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                    <p v-if="form.recentlySuccessful" class="pt-2 text-sm text-gray-600">プロフィールを更新しました。</p>
                 </Transition>
             </div>
         </form>
