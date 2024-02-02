@@ -24,7 +24,9 @@ defineProps({
                 <p class="text-center font-bold text-3xl pb-4 text-[#006f89]">プロフィール編集</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                     
-                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-6 mt-8 mb-8">
+                    <a :href="route('mypage')" class="mt-6 text-[#006f89]">≪ マイページへ戻る</a>
+                    
+                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg pb-6 mt-2 mb-8">
                         <div class="bg-[#006f89] overflow-hidden">
                             <p class="text-center font-bold text-2xl text-white mt-4 mb-4">基本情報</p>
                         </div>
