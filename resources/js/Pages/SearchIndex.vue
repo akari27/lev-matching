@@ -83,7 +83,7 @@ function isApplied(id) {
                             <div class="grid justify-center">
                                 <div class="mt-4">
                                     <label for="selectedGender" class="block text-[#00323e]">性別</label>
-                                    <select v-model="form.selectedGender" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] outline-none w-48">
+                                    <select v-model="form.selectedGender" class="block bg-[#006f8920] text-[#004758] rounded-lg focus:border-[#006f89] focus:ring-[#006f89] outline-none w-48">
                                         <option :value=null>全て</option>
                                         <option :value=0>男性</option>
                                         <option :value=1>女性</option>
@@ -92,7 +92,7 @@ function isApplied(id) {
                                 
                                 <div class="mt-4">
                                     <label for="selectedHobbyr" class="block text-[#00323e]">趣味</label>
-                                    <select v-model="form.selectedHobby" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] focus:outline-none w-48">
+                                    <select v-model="form.selectedHobby" class="block bg-[#006f8920] text-[#004758] rounded-lg focus:border-[#006f89] focus:ring-[#006f89] focus:outline-none w-48">
                                         <option :value=null>全て</option>
                                         <option v-for="hobby_category in props.hobbycategories" :value= "hobby_category.id">{{ hobby_category.name }}</option>
                                     </select>
@@ -100,7 +100,7 @@ function isApplied(id) {
                                 
                                 <div class="mt-4">
                                     <label for="selectedRegisterLocation" class="block text-[#00323e]">出身国</label>
-                                    <select v-model="form.selectedRegisterLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
+                                    <select v-model="form.selectedRegisterLocation" class="block bg-[#006f8920] text-[#004758] rounded-lg focus:border-[#006f89] focus:ring-[#006f89] w-48">
                                         <option :value=null>全て</option>
                                         <option v-for="country in props.countries" :value= "country.id">{{ country.name }}</option>
                                     </select>
@@ -108,7 +108,7 @@ function isApplied(id) {
                                 
                                 <div class="mt-4">
                                     <label for="selectedStayLocation" class="block -[#00323e]">訪問場所</label>
-                                    <select v-model="form.selectedStayLocation" class="block bg-[#006f8920] text-[#00323e] rounded-lg focus:ring-[#006f89] w-48">
+                                    <select v-model="form.selectedStayLocation" class="block bg-[#006f8920] text-[#004758] rounded-lg focus:border-[#006f89] focus:ring-[#006f89] w-48">
                                         <option :value=null>全て</option>
                                         <option v-for="japanlocation in props.japanlocations" :value= "japanlocation.id">{{ japanlocation.name }}</option>
                                     </select>
@@ -149,7 +149,7 @@ function isApplied(id) {
                                                 <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] mt-4">
                                                     <p v-if="isApplicationSent(user.id)" class="w-24">申請済み</p>
                                                     <p v-else-if="isApplied(user.id)" class="w-40 text-lg font-bold">申請が届いています！</p>
-                                                    <input v-else type="submit" class="w-24 font-bold" value='申請'/>
+                                                    <input v-else type="submit" class="w-24 font-bold cursor-pointer" value='申請'/>
                                                 </div>
                                             </div>
                                         </div>
