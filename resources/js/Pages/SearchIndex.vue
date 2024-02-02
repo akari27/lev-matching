@@ -148,7 +148,7 @@ function isApplied(id) {
                                                 </div>
                                                 <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] mt-4">
                                                     <p v-if="isApplicationSent(user.id)" class="w-24">申請済み</p>
-                                                    <p v-else-if="isApplied(user.id)" class="w-40 text-lg font-bold">申請が届いています！</p>
+                                                    <p v-else-if="isApplied(user.id)" class="w-40 text-base font-bold cursor:pointer"><a :href="route('application.index')">申請が届いています！</a></p>
                                                     <input v-else type="submit" class="w-24 font-bold cursor-pointer" value='申請'/>
                                                 </div>
                                             </div>

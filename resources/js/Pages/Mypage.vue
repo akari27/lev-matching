@@ -20,8 +20,7 @@ const props = defineProps({
                 <div v-if="!props.user.register_location || !props.user.often_go_location || !props.user.comment" class="pt-6">
                     <p class="text-center font-bold text-1xl text-[#e35748]">
                         未登録の項目があります！
-                        <a :href="route('profile.edit')" class="underline">今すぐ登録</a>
-                        しましょう
+                        <a :href="route('profile.edit')" class="underline">登録するとマッチング率UP！</a>
                     </p>
                 </div>
                     

@@ -200,7 +200,7 @@ const updateProfile = () => {
             </div>
             
             <div>
-                <InputLabel for="image_url" value="image" />
+                <InputLabel for="image_url" value="プロフィール画像" />
                 <input
                     id="image_url"
                     type="file"
