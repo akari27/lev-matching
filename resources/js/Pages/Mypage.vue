@@ -18,7 +18,11 @@ const props = defineProps({
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
 
                 <div v-if="!props.user.register_location || !props.user.often_go_location || !props.user.comment" class="pt-6">
-                    <p class="text-center font-bold text-1xl text-[#e35748]">未登録の項目があります！今すぐ登録しましょう</p>
+                    <p class="text-center font-bold text-1xl text-[#e35748]">
+                        未登録の項目があります！
+                        <a :href="route('profile.edit')" class="underline">今すぐ登録</a>
+                        しましょう
+                    </p>
                 </div>
                     
                     <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">

@@ -34,19 +34,19 @@ const showingNavigationDropdown = ref(false);
                         <div class="hidden lg:flex lg:items-center lg:ml-6">
                             <!-- Navigation Links -->
                             <div class="hidden lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage')">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage') || route().current('profile.edit')">
                                     マイページ
                                 </NavLink>
-                                <NavLink v-else :href="route('foreign.mypage')" :active="route().current('foreign.mypage')">
+                                <NavLink v-else :href="route('foreign.mypage')" :active="route().current('foreign.mypage') || route().current('foreign.profile.edit')">
                                     Mypage
                                 </NavLink>
                             </div>
             
                             <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index')">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index') || route().current('search.apply.index')">
                                     検索
                                 </NavLink>
-                                <NavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index')">
+                                <NavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index') || route().current('foreign.search.apply') || route().current('foreign.search.apply.index')" >
                                     Search
                                 </NavLink>
                             </div>
@@ -61,10 +61,10 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             
                             <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index')">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index') || route().current('chat.show')">
                                     チャット
                                 </NavLink>
-                                <NavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index')">
+                                <NavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index') || route().current('foreign.chat.show')">
                                     Chat
                                 </NavLink>
                             </div>
@@ -100,7 +100,7 @@ const showingNavigationDropdown = ref(false);
                                         <!--<DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>-->
                                         <DropdownLink :href="route('logout')" method="post" as="button">
                                             <span v-if="$page.props.auth.user.is_japanese==1">ログアウト</span>
-                                            <span v-else>ログアウト</span>
+                                            <span v-else>Logout</span>
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -146,18 +146,18 @@ const showingNavigationDropdown = ref(false);
                     class="lg:hidden bg-[#fffcf7ff] py-2 mt-2"
                 >
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')" :active="route().current('mypage') || route().current('profile.edit')">
                             マイページ
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink v-else :href="route('foreign.mypage')" :active="route().current('foreign.mypage')">
+                        <ResponsiveNavLink v-else :href="route('foreign.mypage')" :active="route().current('foreign.mypage') || route().current('foreign.profile.edit')">
                             Mypage
                         </ResponsiveNavLink>
                     </div>
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index') || route().current('search.apply.index')">
                             検索
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index')">
+                        <ResponsiveNavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index') || route().current('foreign.search.apply.index')">
                             Search
                         </ResponsiveNavLink>
                     </div>
@@ -170,10 +170,10 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                     </div>
                     <div class="py-2 space-y-1">
-                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index')">
+                        <ResponsiveNavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('chat.index')" :active="route().current('chat.index') || route().current('chat.show')">
                             チャット
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index')">
+                        <ResponsiveNavLink v-else :href="route('foreign.chat.index')" :active="route().current('foreign.chat.index') || route().current('foreign.chat.show')">
                             Chat
                         </ResponsiveNavLink>
                     </div>
