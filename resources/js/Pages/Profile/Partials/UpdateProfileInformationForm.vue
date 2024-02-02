@@ -108,7 +108,7 @@ const updateProfile = () => {
                 <select
                     id="gender_flag"
                     type="gender_flag"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.gender_flag"
                     required
                     autocomplete="username"
@@ -145,7 +145,7 @@ const updateProfile = () => {
                 <select
                     id="hobby_category_id"
                     type="hobby_category_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.hobby_category_id"
                     required
                     autocomplete="username"
@@ -162,7 +162,7 @@ const updateProfile = () => {
                 <select
                     id="register_location_id"
                     type="register_location_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.register_location_id"
                     autocomplete="username"
                 >
@@ -178,7 +178,7 @@ const updateProfile = () => {
                 <select
                     id="often_go_location_id"
                     type="often_go_location_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.often_go_location_id"
                     autocomplete="username"
                 >

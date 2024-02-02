@@ -103,12 +103,12 @@ function reject(id){
                                         </div>
                                         <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
                                             <form @submit.prevent="permission(recieve.sender_id)" >
-                                                <input type="submit" value='承認'/>
+                                                <input class='cursor-pointer' type="submit" value='承認'/>
                                             </form>
                                         </div>
                                         <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
                                             <form @submit.prevent="reject(recieve.sender_id)" >
-                                                <input type="submit" value='却下'/>
+                                                <input class='cursor-pointer' type="submit" value='却下'/>
                                             </form>
                                         </div>
                                     </div>

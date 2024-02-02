@@ -148,7 +148,7 @@ function isApplicationSent(id) {
                                                 </div>
                                                 <div class="rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-24 mt-4">
                                                     <p v-if="isApplicationSent(user.id)">申請済み</p>
-                                                    <input v-else type="submit" class="font-bold" value='申請'/>
+                                                    <input v-else type="submit" class="font-bold cursor-pointer" value='申請'/>
                                                 </div>
                                             </div>
                                         </div>

@@ -97,7 +97,7 @@ function scrollToBottom() {
                             <div class="w-4/5 my-4 flex">
                                 <div class="w-full">
                                     <input
-                                        class="bg-[#ffe6b9ff] w-full border-none rounded-l-lg"
+                                        class="bg-[#ffe6b9ff] w-full border-none rounded-l-lg text-[#004758] focus:ring-[#006f89] placeholder:italic placeholder:text-[#897c67]"
                                         v-model="form.sendMessage"
                                         type="text"
                                         placeholder="メッセージを入力"
