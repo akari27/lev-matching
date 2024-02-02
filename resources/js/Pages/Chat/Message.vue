@@ -46,7 +46,8 @@ function scrollToBottom() {
         <AuthenticatedLayout>
             <div class="py-4">
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
-                    <div class="bg-white overflow-hidden shadow-md rounded-lg pb-4 mt-8 mb-4">
+                    
+                    <div class="bg-white overflow-hidden shadow-md rounded-lg pb-4 mt-2 mb-4">
                         <div class="bg-[#fdc562ff] overflow-hidden">
                             <p class="text-center font-bold text-2xl text-white mt-4 mb-4">{{ props.user.name }}</p>
                         </div>
