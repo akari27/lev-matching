@@ -12,6 +12,8 @@ use Inertia\Response;
 use App\Models\Japanese;
 use App\Models\HobbyCategory;
 use App\Models\JapanLocation;
+use App\Models\Application;
+use App\Models\Chat;
 use App\Http\Requests\ProfileUpdateRequest;
 use Cloudinary;
 use App\Http\Controllers\Controller;
@@ -64,16 +66,21 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request, Application $application,Chat $chat): RedirectResponse
     {
         $request->validate([
             'password' => ['required', 'current-password'],
         ]);
 
         $user = $request->user();
+        
+        $matching = $application->where('sender_id', Auth::id())->orWhere('receiver_id', Auth::id());
+        $chat = $chat->where('sender_id', Auth::id())->orWhere('receiver_id', Auth::id());
 
         Auth::logout();
-
+        
+        $chat->delete();
+        $matching->delete();
         $user->delete();
 
         $request->session()->invalidate();
