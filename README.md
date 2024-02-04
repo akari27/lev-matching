@@ -3,9 +3,10 @@
 ## 目次
 1.制作背景
 2.使用技術
-3.機能
-4.デモ
-5.工夫した点・課題点
+3.ER図
+4.機能
+5.デモ
+6.工夫した点・課題点
 
 ## 1.制作背景
 最近、コロナが落ち着いた&円安の影響で訪日外国人が増えています。
@@ -17,8 +18,10 @@ AWS Cloud9
 
 Laravel9, Vue.js, HTML/CSS, Tailwind CSS, JavaScript, PHP, MySQL, Cloudinary
 
-## 3.機能
+## 3.ER図
+https://drive.google.com/file/d/1DWJR5Q3Y15Xi3uR2YvFypouZ3nXNOv5Z/view?usp=sharing
 
+## 4.機能
 ### ログイン・新規登録
 - マルチ認証 ユーザ登録時に日本人か訪日外国人かを登録することでユーザ種別を判別 コントローラーでログイン後の遷移画面を切り替え
 - マッチングアプリのため20歳未満は登録不可 バリデーションで実装
@@ -42,7 +45,7 @@ Laravel9, Vue.js, HTML/CSS, Tailwind CSS, JavaScript, PHP, MySQL, Cloudinary
 - メッセージは30文字まで送信可能 バリデーションで実装
 
 
-## 4.デモ
+## 5.デモ
 ### デモURL
 https://lev-matching-398333f93750.herokuapp.com/login
 
@@ -63,7 +66,7 @@ Email: kimsoyeon@gmail.com
 
 Password: testtest
 
-## 5.工夫した点・課題点
+## 6.工夫した点・課題点
 ### 工夫した点
 - マルチ認証を実装し、日本人に表示するUIと訪日外国人に表示するUIをそれぞれ作成した
 - ユーザが登録する情報を増やした点に伴い、独自のフォームリクエストを作 バリデーションルールの設定とエラーメッセージのカスタマイズを行った
