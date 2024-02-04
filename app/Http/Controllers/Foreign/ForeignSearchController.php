@@ -35,8 +35,8 @@ class ForeignSearchController extends Controller
         $result = [];
         // $query = $user->with('japanese')->where('id','!=',Auth::id())->where('is_japanese',1);
         
-        $a = $application->where('sender_id',Auth::id());
-        $b = $application->where('receiver_id',Auth::id());
+        $a = $application->where('sender_id',Auth::id())->where('permission_flag','!=',0);
+        $b = $application->where('receiver_id',Auth::id())->where('permission_flag','!=',0);
         
         $receiver_ids = $a->pluck('receiver_id');
         $sender_ids = $b->pluck('sender_id');
