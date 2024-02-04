@@ -23,16 +23,21 @@ class ForeignApplicationController extends Controller
                 $s=$user->with('japanese')->where('id',$send->receiver_id)->first();
                 
                 $hobbyId = $s->hobby_category_id;
-                $registerLocationId = $s->japanese->register_location_id;
-                $oftenGoLocationId = $s->japanese->often_go_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
-                $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
-                
                 $send->hobby = $hobbyName;
-                $send->register_location = $registerLocationName;
-                $send->often_go_location = $oftenGoLocationName;
+                
+                if($s->japanese->register_location_id != null){
+                    $registerLocationId = $s->japanese->register_location_id;
+                    $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
+                    $send->register_location = $registerLocationName;
+                }
+                
+                if($s->japanese->often_go_location_id != null){
+                    $oftenGoLocationId = $s->japanese->often_go_location_id;
+                    $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
+                    $send->often_go_location = $oftenGoLocationName;
+                }
+                
                 $send->add_info = $s;
             });
             
@@ -42,16 +47,21 @@ class ForeignApplicationController extends Controller
                 $r=$user->with('japanese')->where('id',$recieve->sender_id)->first();
 
                 $hobbyId = $r->hobby_category_id;
-                $registerLocationId = $r->japanese->register_location_id;
-                $oftenGoLocationId = $r->japanese->often_go_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
-                $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
-                
                 $recieve->hobby = $hobbyName;
-                $recieve->register_location = $registerLocationName;
-                $recieve->often_go_location = $oftenGoLocationName;
+                
+                if($r->japanese->register_location_id != null){
+                    $registerLocationId = $r->japanese->register_location_id;
+                    $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
+                    $recieve->register_location = $registerLocationName;
+                }
+                
+                if($r->japanese->often_go_location_id != null){
+                    $oftenGoLocationId = $r->japanese->often_go_location_id;
+                    $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
+                    $recieve->often_go_location = $oftenGoLocationName;
+                }
+                
                 $recieve->add_info = $r;
             });
 
@@ -70,16 +80,21 @@ class ForeignApplicationController extends Controller
                 $a=$user->with('japanese')->where('id',$userId)->first();
 
                 $hobbyId = $a->hobby_category_id;
-                $registerLocationId = $a->japanese->register_location_id;
-                $oftenGoLocationId = $a->japanese->often_go_location_id;
-                
                 $hobbyName = $hobby_category->where('id', $hobbyId)->first()->name;
-                $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
-                $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
-                
                 $approved->hobby = $hobbyName;
-                $approved->register_location = $registerLocationName;
-                $approved->often_go_location = $oftenGoLocationName;
+                
+                if($a->japanese->register_location_id != null){
+                    $registerLocationId = $a->japanese->register_location_id;
+                    $registerLocationName = $japan_location->where('id', $registerLocationId)->first()->name;
+                    $approved->register_location = $registerLocationName;
+                }
+                
+                if($a->japanese->often_go_location_id != null){
+                    $oftenGoLocationId = $a->japanese->often_go_location_id;
+                    $oftenGoLocationName = $japan_location->where('id', $oftenGoLocationId)->first()->name;
+                    $approved->often_go_location = $oftenGoLocationName;
+                }
+
                 $approved->add_info = $a;
             });
         
