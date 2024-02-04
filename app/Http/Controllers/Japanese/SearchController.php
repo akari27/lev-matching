@@ -102,10 +102,11 @@ class SearchController extends Controller
             'users' => $result,
             'countries' => $country->get(),
             'hobbycategories' => $hobbycategory->get(),
+            'japanlocations' => $japanlocation->get(),
             'applications' => $application->where('sender_id',Auth::id())->orWhere('receiver_id',Auth::id())->get(),
         ]);
     }
-    public function apply(Request $request, User $user,Country $country, HobbyCategory $hobbycategory, Application $application)
+    public function apply(Request $request, User $user,Country $country, JapanLocation $japanlocation, HobbyCategory $hobbycategory, Application $application)
     {
         $input["sender_id"]=Auth::id();
         $input["receiver_id"]=$request["selectedUser"];
@@ -115,6 +116,7 @@ class SearchController extends Controller
             'users' => $request["allUsers"],
             'countries' => $country->get(),
             'hobbycategories' => $hobbycategory->get(),
+            'japanlocations' => $japanlocation->get(),
             'applications' => $application->where('sender_id',Auth::id())->orWhere('receiver_id',Auth::id())->get(),
         ]);
     }
