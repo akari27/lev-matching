@@ -28,7 +28,7 @@ function reject(id){
 </script>
 
 <template>
-    <Head title="ForeignApplication" />
+    <Head title="Application" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
@@ -65,7 +65,7 @@ function reject(id){
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
-                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
                                                     <p class="w-4/5 ml-2">{{ send.often_go_location }}</p>
                                                 </div>
                                                 
@@ -129,7 +129,7 @@ function reject(id){
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
-                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
                                                     <p class="w-4/5 ml-2">{{ recieve.often_go_location }}</p>
                                                 </div>
                                                 
@@ -183,7 +183,7 @@ function reject(id){
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
-                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
+                                                    <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
                                                     <p class="w-4/5 ml-2">{{ approved.often_go_location }}</p>
                                                 </div>
                                                 

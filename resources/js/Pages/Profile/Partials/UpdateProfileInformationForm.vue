@@ -4,7 +4,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
@@ -25,8 +25,8 @@ const form = useForm({
     comment: user.comment,
     image_url: user.image_url,
     hobby_category_id: user.hobby_category_id,
-    register_location_id: props.japanese.register_location_id!=null ? props.japanese.register_location_id : '未登録',
-    often_go_location_id: props.japanese.often_go_location_id!=null ? props.japanese.often_go_location_id : '未登録',
+    register_location_id: props.japanese.register_location_id!=null ? props.japanese.register_location_id : null,
+    often_go_location_id: props.japanese.often_go_location_id!=null ? props.japanese.often_go_location_id : null,
 });
 
 function image_save($event){
@@ -34,10 +34,6 @@ function image_save($event){
     form.image_url = $event.target.files[0]
     console.log(form.image_url)
 }
-
-// onMounted(()=>{
-//     console.log(props.hobbyCategories);
-// })
 
 const updateProfile = () => {
     form.post(route('profile.update'), {

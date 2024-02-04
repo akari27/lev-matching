@@ -62,7 +62,7 @@ function isApplicationSent(id) {
 </script>
 
 <template>
-    <Head title="ForeignSearch" />
+    <Head title="Search" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
@@ -167,12 +167,12 @@ function isApplicationSent(id) {
                                                     <div class="text-base mx-2 w-full">
                                                         <div class="mt-4 flex">
                                                             <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
-                                                            <p class="w-4/5 ml-2">{{ user.register_location }}</p>
+                                                            <p class="w-4/5 ml-2">{{ user.register_location ? user.register_location : '-' }}</p>
                                                         </div>
                                                         
                                                         <div class="mt-2 flex">
-                                                            <p class="w-1/5 font-bold text-[#6c8489]">よく行く場所</p>
-                                                            <p class="w-4/5 ml-2">{{ user.often_go_location }}</p>
+                                                            <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
+                                                            <p class="w-4/5 ml-2">{{ user.often_go_location ? user.often_go_location : '-'}}</p>
                                                         </div>
                                                         
                                                         <div class="mt-2 flex">
@@ -182,7 +182,7 @@ function isApplicationSent(id) {
                                                         
                                                         <div class="mt-2 flex">
                                                             <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
-                                                            <p class="w-4/5 ml-2">{{ user.comment }}</p>
+                                                            <p class="w-4/5 ml-2">{{ user.comment ? user.comment : '-'}}</p>
                                                         </div>
                                                     </div>
                                                 </div>

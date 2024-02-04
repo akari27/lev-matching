@@ -18,8 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     
-    public const JAPANESE_HOME = '/profile';
-    public const FOREIGN_HOME = '/foreign/profile';
+    public const JAPANESE_HOME = '/mypage';
+    public const FOREIGN_HOME = '/foreign/mypage';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

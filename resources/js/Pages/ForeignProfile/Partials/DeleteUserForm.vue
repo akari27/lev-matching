@@ -40,22 +40,22 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <p class="mt-6 text-sm text-gray-600">
-           一度アカウントを削除すると復元できません。
+           Once an account is deleted, it cannot be restored.
         </p>
         
         <div class="text-center">
-            <DangerButton @click="confirmUserDeletion">アカウント削除</DangerButton>
+            <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
         </div>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    本当にアカウントを削除しますか？
+                    Do you really want to delete your account?
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    一度アカウントを削除すると永久に復元できません。
-                    アカウント削除を希望する場合はパスワードを入力してください。
+                    Once an account is deleted, it cannot be permanently restored.
+                    If you wish to delete your account, please enter your password.
                 </p>
 
                 <div class="mt-6">
@@ -75,7 +75,7 @@ const closeModal = () => {
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> キャンセル </SecondaryButton>
+                    <SecondaryButton @click="closeModal"> Cansell </SecondaryButton>
 
                     <DangerButton
                         class="ml-3"
@@ -83,7 +83,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        アカウント削除
+                        Delete Account
                     </DangerButton>
                 </div>
             </div>
