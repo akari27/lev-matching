@@ -33,7 +33,18 @@ class ForeignSearchController extends Controller
         )
     {
         $result = [];
-        $query = $user->with('japanese')->where('id','!=',Auth::id())->where('is_japanese',1);
+        // $query = $user->with('japanese')->where('id','!=',Auth::id())->where('is_japanese',1);
+        
+        $a = $application->where('sender_id',Auth::id());
+        $b = $application->where('receiver_id',Auth::id());
+        
+        $receiver_ids = $a->pluck('receiver_id');
+        $sender_ids = $b->pluck('sender_id');
+        
+        $query = $user->with('japanese')
+                      ->where('is_japanese', 1)
+                      ->whereNotIn('id', $receiver_ids)
+                      ->whereNotIn('id', $sender_ids);
         
         if ($request->filled('selectedGender')) {
             $query->where('gender_flag', $request->selectedGender);
