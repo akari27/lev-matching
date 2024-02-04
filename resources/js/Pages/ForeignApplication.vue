@@ -61,12 +61,12 @@ function reject(id){
                                             <div class="text-base mx-2 w-full">
                                                 <div class="mt-4 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
-                                                    <p class="w-4/5 ml-2">{{ send.register_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ send.register_location ? send.register_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
-                                                    <p class="w-4/5 ml-2">{{ send.often_go_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ send.often_go_location ? send.often_go_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
@@ -76,7 +76,7 @@ function reject(id){
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
-                                                    <p class="w-4/5 ml-2">{{ send.add_info.comment }}</p>
+                                                    <p class="w-4/5 ml-2">{{ send.add_info.comment ? send.add_info.comment : '-'}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,12 +125,12 @@ function reject(id){
                                             <div class="text-base mx-2 w-full">
                                                 <div class="mt-4 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
-                                                    <p class="w-4/5 ml-2">{{ recieve.register_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.register_location ? recieve.register_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
-                                                    <p class="w-4/5 ml-2">{{ recieve.often_go_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.often_go_location ? recieve.often_go_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
@@ -140,7 +140,7 @@ function reject(id){
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
-                                                    <p class="w-4/5 ml-2">{{ recieve.add_info.comment }}</p>
+                                                    <p class="w-4/5 ml-2">{{ recieve.add_info.comment ? recieve.add_info.comment : '-' }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,12 +179,12 @@ function reject(id){
                                             <div class="text-base mx-2 w-full">
                                                 <div class="mt-4 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
-                                                    <p class="w-4/5 ml-2">{{ approved.register_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.register_location ? approved.register_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
-                                                    <p class="w-4/5 ml-2">{{ approved.often_go_location }}</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.often_go_location ? approved.often_go_location : '-' }}</p>
                                                 </div>
                                                 
                                                 <div class="mt-2 flex">
@@ -194,7 +194,7 @@ function reject(id){
                                                 
                                                 <div class="mt-2 flex">
                                                     <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
-                                                    <p class="w-4/5 ml-2">{{ approved.add_info.comment }}</p>
+                                                    <p class="w-4/5 ml-2">{{ approved.add_info.comment ? approved.add_info.comment : '-' }}</p>
                                                 </div>
                                             </div>
                                         </div>
