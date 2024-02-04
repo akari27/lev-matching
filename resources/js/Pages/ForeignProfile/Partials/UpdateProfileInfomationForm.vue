@@ -136,8 +136,8 @@ const updateProfile = () => {
             </div>
             
             <div>
-                <p class="text-sm text-gray-700">Japanese or Foreigners Visiting Japan  *Unchangeable</p>
-                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? 'Japanese' : 'Foreigners Visiting Japan' }}</p>
+                <p class="text-sm text-gray-700">日本人か訪日外国人か ※変更不可</p>
+                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? '日本人' : '訪日外国人' }}</p>
             </div>
             
             <div>
