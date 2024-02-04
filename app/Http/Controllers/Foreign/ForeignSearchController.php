@@ -91,6 +91,8 @@ class ForeignSearchController extends Controller
     
         return Inertia::render('ForeignSearchIndex',[
             'users' => $result,
+            'japanlocations' => $japanlocation->get(),
+            'hobbycategories' => $hobbycategory->get(),
             'applications' => $a,
         ]);
     }
