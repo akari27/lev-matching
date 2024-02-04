@@ -20,7 +20,15 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('mypage')">
+                                <Link v-if="$page.props.auth.user.is_japanese==1" :href="route('mypage')">
+                                    <div class="flex items-center">
+                                        <ApplicationLogo
+                                            class="block h-12 w-auto fill-current text-gray-800"
+                                        />
+                                        <span class="text-2xl text-[#006f89] font-logo font-bold ml-2">Travel Matching</span>
+                                    </div>
+                                </Link>
+                                <Link v-else :href="route('foreign.mypage')">
                                     <div class="flex items-center">
                                         <ApplicationLogo
                                             class="block h-12 w-auto fill-current text-gray-800"
@@ -184,7 +192,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="py-2 space-y-1">
                         <ResponsiveNavLink :href="route('logout')" method="post" as="button">
                             <span v-if="$page.props.auth.user.is_japanese==1">ログアウト</span>
-                            <span v-else>ログアウト</span>
+                            <span v-else>Logout</span>
                         </ResponsiveNavLink>
                     </div>
                 </div>

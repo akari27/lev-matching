@@ -105,8 +105,8 @@ const submit = () => {
                     required
                     autocomplete="is_japanese"
                 >
-                    <option value="1">Japanese</option>
-                    <option value="0">Foreign visitor</option>
+                    <option value="1">日本人</option>
+                    <option value="0">訪日外国人</option>
                 </select>
 
                 <InputError class="mt-2" :message="form.errors.is_japanese" />
@@ -122,8 +122,8 @@ const submit = () => {
                     required
                     autocomplete="gender_flag"
                 >
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
+                    <option value="0">男性</option>
+                    <option value="1">女性</option>
                 </select>
 
                 <InputError class="mt-2" :message="form.errors.gender_flag" />

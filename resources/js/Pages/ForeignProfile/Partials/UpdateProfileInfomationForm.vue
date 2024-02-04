@@ -4,12 +4,11 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
-    // 入れ子構造なので注意　edit.vue
     hobby_categories: Array,
     japan_regions: Array,
     japan_locations: Array,
@@ -29,11 +28,11 @@ const form = useForm({
     comment: user.comment,
     image_url: user.image_url,
     hobby_category_id: user.hobby_category_id,
-    register_location_id: props.foreign.register_location_id!=null ? props.foreign.register_location_id : '未登録',
-    stay_location_id: props.foreign.stay_location_id!=null ? props.foreign.stay_location_id : '未登録',
-    start_of_stay: props.foreign.start_of_stay!=null ? props.foreign.start_of_stay : '未登録',
-    end_of_stay: props.foreign.end_of_stay!=null ? props.foreign.end_of_stay : '未登録',
-    reason: props.foreign.reason!=null ? props.foreign.reason : '',
+    register_location_id: props.foreign.register_location_id!=null ? props.foreign.register_location_id : null,
+    stay_location_id: props.foreign.stay_location_id!=null ? props.foreign.stay_location_id : null,
+    start_of_stay: props.foreign.start_of_stay!=null ? props.foreign.start_of_stay : null,
+    end_of_stay: props.foreign.end_of_stay!=null ? props.foreign.end_of_stay : null,
+    reason: props.foreign.reason!=null ? props.foreign.reason : null,
 });
 
 function image_save($event){
@@ -42,11 +41,17 @@ function image_save($event){
     console.log(form.image_url)
 }
 
+const updateProfile = () => {
+    form.post(route('foreign.profile.update'), {
+        preserveScroll: true,
+    });
+};
+
 </script>
 
 <template>
     <section>
-        <form @submit.prevent="form.post(route('foreign.profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
+        <form @submit.prevent="updateProfile" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
                 <InputLabel for="name" value="名前 ※必須" />
 
@@ -64,7 +69,7 @@ function image_save($event){
             </div>
 
             <div>
-                <InputLabel for="email" value="Email ※必須" />
+                <InputLabel for="email" value="Eメール ※必須" />
 
                 <TextInput
                     id="email"
@@ -104,7 +109,7 @@ function image_save($event){
                 <select
                     id="gender_flag"
                     type="gender_flag"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.gender_flag"
                     required
                     autocomplete="username"
@@ -116,7 +121,7 @@ function image_save($event){
             </div>
             
             <div>
-                <InputLabel for="age" value="Age" />
+                <InputLabel for="age" value="年齢" />
 
                 <TextInput
                     id="age"
@@ -131,17 +136,17 @@ function image_save($event){
             </div>
             
             <div>
-                <p class="text-sm text-gray-700">日本人か外国人か ※変更不可</p>
-                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? '日本人' : '外国人' }}</p>
+                <p class="text-sm text-gray-700">Japanese or Foreigners Visiting Japan  *Unchangeable</p>
+                <p class="mt-2 ml-2">{{ form.is_japanese == 1 ? 'Japanese' : 'Foreigners Visiting Japan' }}</p>
             </div>
             
             <div>
-                <InputLabel for="hobby_category_id" value="Hobby ※必須" />
+                <InputLabel for="hobby_category_id" value="趣味 ※必須" />
 
                 <select
                     id="hobby_category_id"
                     type="hobby_category_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.hobby_category_id"
                     required
                     autocomplete="username"
@@ -153,12 +158,12 @@ function image_save($event){
             
         <!--外国人に表示する項目-->
             <div>
-                <InputLabel for="register_location_id" value="RegisterLocation" />
+                <InputLabel for="register_location_id" value="居住地" />
 
                 <select
                     id="register_location_id"
                     type="register_location_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.register_location_id"
                     autocomplete="username"
                 >
@@ -169,12 +174,12 @@ function image_save($event){
 
         <!--外国人に表示する項目-->
             <div>
-                <InputLabel for="stay_location_id" value="StayLocation" />
+                <InputLabel for="stay_location_id" value="訪問場所" />
 
                 <select
                     id="stay_location_id"
                     type="stay_location_id"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.stay_location_id"
                     autocomplete="username"
                 >
@@ -185,12 +190,12 @@ function image_save($event){
 
         <!--外国人に表示する項目-->
             <div>
-                <InputLabel for="start_of_stay" value="StartOfStay" />
+                <InputLabel for="start_of_stay" value="訪問日" />
 
                 <input
                     id="start_of_stay"
                     type="date"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.start_of_stay"
                     autocomplete="username"
                 >
@@ -199,12 +204,12 @@ function image_save($event){
 
         <!--外国人に表示する項目-->
             <div>
-                <InputLabel for="end_of_stay" value="EndOfStay" />
+                <InputLabel for="end_of_stay" value="帰国日" />
 
                 <input
                     id="end_of_stay"
                     type="date"
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="mt-1 block w-full border-gray-300 text-[#004758] focus:border-[#006f89] focus:ring-[#006f89] rounded-md shadow-sm"
                     v-model="form.end_of_stay"
                     autocomplete="username"
                 />
@@ -213,7 +218,7 @@ function image_save($event){
             
             <!--外国人に表示する項目-->
             <div>
-                <InputLabel for="reason" value="Reason" />
+                <InputLabel for="reason" value="訪日理由" />
                 <TextInput
                     id="reason"
                     type="text"
@@ -225,7 +230,7 @@ function image_save($event){
             </div>
             
             <div>
-                <InputLabel for="comment" value="Comment" />
+                <InputLabel for="comment" value="ヒトコト" />
                 <TextInput
                     id="comment"
                     type="text"
@@ -237,7 +242,7 @@ function image_save($event){
             </div>
             
             <div>
-                <InputLabel for="image_url" value="image" />
+                <InputLabel for="image_url" value="プロフィール画像" />
                 <input
                     id="image_url"
                     type="file"
@@ -249,10 +254,10 @@ function image_save($event){
             </div>
 
             <div class="text-center">
-                <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
+                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Profile has been updated.</p>
                 </Transition>
             </div>
         </form>

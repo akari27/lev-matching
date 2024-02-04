@@ -67,7 +67,7 @@ function isApplied(id) {
 </script>
 
 <template>
-    <Head title="Search" />
+    <Head title="検索" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">

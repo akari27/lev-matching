@@ -37,7 +37,7 @@ const updatePassword = () => {
     <section>
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" value="現在のパスワード" />
+                <InputLabel for="current_password" value="Current Password" />
 
                 <TextInput
                     id="current_password"
@@ -52,7 +52,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password" value="新しいパスワード" />
+                <InputLabel for="password" value="New Password" />
 
                 <TextInput
                     id="password"
@@ -67,7 +67,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password_confirmation" value="新しいパスワードの確認" />
+                <InputLabel for="password_confirmation" value="Confirm new password" />
 
                 <TextInput
                     id="password_confirmation"
@@ -81,9 +81,12 @@ const updatePassword = () => {
             </div>
             
             <div class="text-center">
-                <PrimaryButton :disabled="form.processing">保存</PrimaryButton>
+                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                
+                <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
+                    <p v-if="form.recentlySuccessful" class="pt-2 text-sm text-gray-600">Password changed.</p>
+                </Transition>
             </div>
         </form>
     </section>
 </template>
-

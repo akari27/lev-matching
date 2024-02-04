@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="Mypage" />
+    <Head title="マイページ" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
@@ -34,6 +34,7 @@ const props = defineProps({
                                     <a :href="route('profile.edit')" class="font-bold rounded-lg bg-[#ffe6b9ff] text-center text-xl text-[#004758] w-28 mt-4"><button>編集する</button></a>
                                 </div>
                             </div>
+                            
                             <div class="flex basis-2/3 px-10 py-6">
                                 <div class="text-[#004758] text-base/7 flex flex-col w-full">
                                     <div class="p-2 border-b border-[#006f89]">
@@ -48,11 +49,11 @@ const props = defineProps({
                                         <div class="text-base mx-2 w-full">
                                             <div class="mt-4 flex">
                                                 <p class="w-1/5 font-bold text-[#6c8489]">居住地</p>
-                                                <p class="w-4/5 ml-2">{{ props.user.register_location }}</p>
+                                                <p class="w-4/5 ml-2" :class="{ 'text-[#e35748] font-bold': !props.user.register_location }">{{ props.user.register_location ? props.user.register_location : '未登録' }}</p>
                                             </div>
                                             <div class="mt-2 flex">
                                                 <p class="w-1/5 font-bold text-[#6c8489]">よく行く</p>
-                                                <p class="w-4/5 ml-2">{{ props.user.often_go_location }}</p>
+                                                <p class="w-4/5 ml-2" :class="{ 'text-[#e35748] font-bold': !props.user.often_go_location }">{{ props.user.often_go_location ? props.user.often_go_location : '未登録'}}</p>
                                             </div>
                                             <div class="mt-2 flex">
                                                 <p class="w-1/5 font-bold text-[#6c8489]">趣味</p>
@@ -60,7 +61,7 @@ const props = defineProps({
                                             </div>
                                             <div class="mt-2 flex">
                                                 <p class="w-1/5 font-bold text-[#6c8489]">ヒトコト</p>
-                                                <p class="w-4/5 ml-2">{{ props.user.comment ? props.user.comment : '未登録' }}</p>
+                                                <p class="w-4/5 ml-2" :class="{ 'text-[#e35748] font-bold': !props.user.comment }">{{ props.user.comment ? props.user.comment : '未登録' }}</p>
                                             </div>
                                         </div>
                                     </div>

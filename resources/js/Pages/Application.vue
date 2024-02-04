@@ -28,7 +28,7 @@ function reject(id){
 </script>
 
 <template>
-    <Head title="Application" />
+    <Head title="申請リスト" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">

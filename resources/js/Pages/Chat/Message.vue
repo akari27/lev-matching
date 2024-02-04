@@ -41,7 +41,7 @@ function scrollToBottom() {
 </script>
 
 <template>
-    <Head title="Chat" />
+    <Head title="チャット" />
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-4">
