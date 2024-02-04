@@ -43,16 +43,22 @@ Laravel9, Vue.js, HTML/CSS, Tailwind CSS, JavaScript, PHP, MySQL, Cloudinary
 
 
 ## 4.デモ
-デモURL : https://lev-matching-398333f93750.herokuapp.com/login
-Github: https://github.com/akari27/lev-matching
+- デモURL : https://lev-matching-398333f93750.herokuapp.com/login
 
-テスト用アカウント:
+- Github: https://github.com/akari27/lev-matching
+
+- テスト用アカウント:
+
 (日本人)
+
 Email: ryokotaro@gmail.com
+
 Password: testtest
 
 (訪日外国人)
-Email: kimsoyeon@gmail.com](mailto:kimsoyeon@gmail.com)
+
+Email: kimsoyeon@gmail.com
+
 Password: testtest
 
 ## 5.工夫した点・課題点
