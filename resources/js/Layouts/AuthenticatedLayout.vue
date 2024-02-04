@@ -51,10 +51,10 @@ const showingNavigationDropdown = ref(false);
                             </div>
             
                             <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index') || route().current('search.apply.index')">
+                                <NavLink v-if="$page.props.auth.user.is_japanese==1" :href="route('search.index')" :active="route().current('search.index') || route().current('search.apply.index') || route().current('search.apply')">
                                     検索
                                 </NavLink>
-                                <NavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index') || route().current('foreign.search.apply') || route().current('foreign.search.apply.index')" >
+                                <NavLink v-else :href="route('foreign.search.index')" :active="route().current('foreign.search.index') || route().current('foreign.search.apply') || route().current('foreign.search.apply.index') || route().current('foreign.search.apply')" >
                                     Search
                                 </NavLink>
                             </div>
