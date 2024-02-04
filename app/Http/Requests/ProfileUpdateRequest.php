@@ -21,8 +21,8 @@ class ProfileUpdateRequest extends FormRequest
             'name' => ['string', 'max:50'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'age' => ['integer', 'min:18', 'max:150'],
-            'comment'  => ['nullable','string','max:20'],
-            'reason' => ['nullable','string','max:20']
+            'comment'  => ['nullable','string','max:30'],
+            'reason' => ['nullable','string','max:30']
         ];
     }
     
@@ -32,15 +32,15 @@ class ProfileUpdateRequest extends FormRequest
             [
                 'name.max' => '名前は50文字以内で入力してください。',
                 'age.min' => '18歳未満の方はご利用いただけません。',
-                'comment.max' => 'ヒトコトは20文字以内で入力してください。',
+                'comment.max' => 'ヒトコトは30文字以内で入力してください。',
             ];
         }else{
             return 
             [
                 'name.max' => 'Name must be 50 characters or less.',
                 'age.min' => 'This service is not available to persons under 18 years of age.',
-                'comment.max' => 'Please enter your comment in 20 characters or less.',
-                'reason.max' => 'Please enter the reason for your visit in 20 characters or less.',
+                'comment.max' => 'Please enter your comment in 30 characters or less.',
+                'reason.max' => 'Please enter the reason for your visit in 30 characters or less.',
             ];
         }
     }

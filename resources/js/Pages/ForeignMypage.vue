@@ -16,15 +16,17 @@ const user = usePage().props.auth.user;
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
-                <p class="text-center font-bold text-3xl text-[#006f89]">マイページ</p>
+                <p class="text-center font-bold text-3xl text-[#006f89] pb-6">マイページ</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
                     
-                    <div v-if="!user_data.register_location || !user_data.start_of_stay || !user_data.end_of_stay || !user_data.stay_location || !user_data.hobby_category || !user.comment " class="pt-6">
-                    <p class="text-center font-bold text-1xl text-[#e35748]">
-                        未登録の項目があります！
-                        <a :href="route('foreign.profile.edit')" class="underline">登録するとマッチング率UP！</a>
-                    </p>
+                    <div v-if="!user_data.register_location || !user_data.start_of_stay || !user_data.end_of_stay || !user_data.stay_location || !user_data.hobby_category || !user.comment " class="pb-2">
+                        <p class="text-center font-bold text-1xl text-[#e35748]">
+                            未登録の項目があります！
+                            <a :href="route('foreign.profile.edit')" class="underline">登録するとマッチング率UP！</a>
+                        </p>
                     </div>
+                    
+                    <p class="text-center text-ml text-[#006f89]">※ 他のユーザに下記のプロフィールが表示されます。</p>
                     
                     <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
                         <div class="flex">
@@ -41,8 +43,8 @@ const user = usePage().props.auth.user;
                                 <div class="text-[#004758] text-base/7 flex flex-col w-full">
                                    <div class="p-2 border-b border-[#006f89]">
                                         <span class="font-bold text-2xl">{{ user.name }}</span>
-                                        <span class="text-lg ml-2" :class="{ 'text-[#e35748] font-bold': !user_data.register_location }">
-                                            {{ user_data.register_location ? user_data.register_location : '(出身地未登録)'}}
+                                        <span class="text-lg ml-2">
+                                            <span :class="{ 'text-[#e35748] font-bold': !user_data.register_location }">{{ user_data.register_location ? user_data.register_location : '(出身地未登録)'}}</span>
                                             {{ user.age }}歳
                                             {{ user.gender_flag == 0 ? '男性' : '女性' }}
                                         </span>

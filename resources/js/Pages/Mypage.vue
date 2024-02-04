@@ -14,15 +14,17 @@ const props = defineProps({
     <div class="bg-[#fff7eeff] px-8 py-4">
         <AuthenticatedLayout>
             <div class="py-8">
-                <p class="text-center font-bold text-3xl text-[#006f89]">マイページ</p>
+                <p class="text-center font-bold text-3xl text-[#006f89] pb-6">マイページ</p>
                 <div class="max-w-3xl mx-auto sm:px-4 lg:px-6">
 
-                <div v-if="!props.user.register_location || !props.user.often_go_location || !props.user.comment" class="pt-6">
-                    <p class="text-center font-bold text-1xl text-[#e35748]">
-                        未登録の項目があります！
-                        <a :href="route('profile.edit')" class="underline">登録するとマッチング率UP！</a>
-                    </p>
-                </div>
+                    <div v-if="!props.user.register_location || !props.user.often_go_location || !props.user.comment">
+                        <p class="text-center font-bold text-1xl text-[#e35748] pb-2">
+                            未登録の項目があります！
+                            <a :href="route('profile.edit')" class="underline">登録するとマッチング率UP！</a>
+                        </p>
+                    </div>
+                    
+                    <p class="text-center text-ml text-[#006f89]">※ 他のユーザに下記のプロフィールが表示されます。</p>
                     
                     <div class="bg-white overflow-hidden shadow-md rounded-lg my-8">
                         <div class="flex">
